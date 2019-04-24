@@ -32,6 +32,7 @@ import { PlayerEditComponent } from './user/user-edit/player-edit.component';
 import { AdminEditComponent } from './user/user-edit/admin-edit.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
+import { GameListComponent } from './game/game-list/game-list.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { InvitationListComponent } from './invitation/invitation-list/invitation
     AdminEditComponent,
     UserSearchComponent,
     InvitationListComponent,
+    GameListComponent,
   ],
   imports: [
     BrowserModule,
