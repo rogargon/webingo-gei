@@ -31,6 +31,9 @@ import { AdminCreateComponent } from './user/user-create/admin-create.component'
 import { PlayerEditComponent } from './user/user-edit/player-edit.component';
 import { AdminEditComponent } from './user/user-edit/admin-edit.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
+import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
+import { GameListComponent } from './game/game-list/game-list.component';
+import { CardListComponent } from './card/card-list/card-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
     PlayerEditComponent,
     AdminEditComponent,
     UserSearchComponent,
+    InvitationListComponent,
+    GameListComponent,
+    CardListComponent,
   ],
   imports: [
     BrowserModule,

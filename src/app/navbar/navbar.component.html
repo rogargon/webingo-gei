@@ -16,8 +16,16 @@
         <div class="dropdown-menu" aria-labelledby="adminDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/users']"><span class="fa fa-user"></span> Users</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Administer other entities...</a>
+
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/invitations']"><span class="fa fa-id-card"></span> Invitations</a>
+
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/games']"><span class="fa fa-gamepad"></span> Games</a>
+
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/cards']"><span class="fa fa-id-card-o"></span> Cards</a>
+
         </div>
       </li>
     </ul>
