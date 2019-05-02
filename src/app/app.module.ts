@@ -18,6 +18,9 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { PlayerService } from './user/player.service';
 import { AdminService } from './user/admin.service';
 
+import { InvitationService } from './invitation/invitation.service';
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
@@ -72,7 +75,7 @@ import { InvitationCreateComponent } from './invitation/invitation-create/invita
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, InvitationService
   ],
   bootstrap: [AppComponent]
 })
