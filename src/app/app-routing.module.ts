@@ -15,6 +15,7 @@ import { AdminCreateComponent } from './user/user-create/admin-create.component'
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import {CardListComponent} from './card/card-list/card-list.component';
+import {InvitationCreateComponent} from "./invitation/invitation-create/invitation-create.component";
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'admins/:id', component: AdminDetailComponent, canActivate: [AdministratorGuard] },
   { path: 'users', component: UserListComponent, canActivate: [AdministratorGuard] },
   { path: 'invitations', component: InvitationListComponent, canActivate: [AdministratorGuard] },
+  { path: 'invitations/new', component: InvitationCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
   { path: 'about', component: AboutComponent },

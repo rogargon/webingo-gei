@@ -1,3 +1,9 @@
-<p>
-  invitation-list works!
-</p>
+<div class="row justify-content-between">
+  <div class="col mb-3">
+    <app-user-search (emitResults)="showSearchResults($event)" [users]="users"></app-user-search>
+  </div>
+  <div class="col mb-3">
+    <button id="newUserBtn" class="btn btn-success pull-right" type="button"
+            [routerLink]="['/players/new']">Create Invitation</button>
+  </div>
+</div>
