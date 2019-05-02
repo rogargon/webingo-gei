@@ -30,4 +30,11 @@ export class LoginNavbarComponent implements OnInit {
   getUser(): User {
     return this.authenticationService.getCurrentUser();
   }
+  isAdmin():boolean{
+    return this.authenticationService.isAdmin();
+  }
+  getCurrentUserId(): String{
+    return this.authenticationService.getCurrentUser().id;
+  }
+
 }
