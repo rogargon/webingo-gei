@@ -27,7 +27,7 @@ export class LoginNavbarComponent implements OnInit {
       timer: 2000
     });
     Toast.fire({
-      type: 'success',
+      type: 'info',
       title: 'Signed out successfully'
     })
   }
