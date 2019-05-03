@@ -24,13 +24,12 @@ export class LoginFormComponent implements OnInit {
       .subscribe(
         user => {
           this.authenticationService.storeCurrentUser(user);
-          Swal.close()
           this.location.back();
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000
+            timer: 2000
           });
           Toast.fire({
             type: 'success',

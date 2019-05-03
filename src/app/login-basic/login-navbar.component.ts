@@ -20,6 +20,16 @@ export class LoginNavbarComponent implements OnInit {
   logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/']);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    Toast.fire({
+      type: 'success',
+      title: 'Signed out successfully'
+    })
   }
 
   getCurrentUserName(): string {
