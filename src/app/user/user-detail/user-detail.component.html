@@ -14,6 +14,7 @@
         <h6 class="card-subtitle text-muted">Role</h6>
         <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
       </div>
+
     </div>
     <div class="card-footer text-right">
         <button id="listBtn" type="button" [routerLink]="['/users']"
@@ -22,7 +23,8 @@
         <button id="editBtn" type="button" [routerLink]="['edit']"
                 class="btn m-1 btn-outline-success">Edit
         </button>
-        <button id="deleteBtn" type="button" [routerLink]="['delete']"
+      <!--[routerLink]="['delete']"-->
+        <button id="deleteBtn" type="button" (click)="delete()"
                 class="btn m-1 btn-outline-danger">Delete
         </button>
       </div>

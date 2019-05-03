@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { Admin } from '../admin';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-admin-detail',
@@ -22,7 +23,36 @@ export class AdminDetailComponent implements OnInit {
   }
 
   public delete() {
-    this.adminService.delete(this.user).subscribe(
-      () => this.router.navigate(['users']));
+
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonClass:"m-1",
+      confirmButtonText: 'Delete it!',
+      cancelButtonClass:"m-1",
+      cancelButtonText: 'Cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.adminService.delete(this.user).subscribe(
+          () => this.router.navigate(['users']));
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'The user ' + this.user.username + ' has been deleted',
+          'success'
+        )
+      }
+    })
   }
 }
