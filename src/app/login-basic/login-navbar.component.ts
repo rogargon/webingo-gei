@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationBasicService} from './authentication-basic.service';
 import {User} from './user';
 import {Router} from "@angular/router";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login-navbar,[app-login-navbar]',
@@ -19,7 +20,6 @@ export class LoginNavbarComponent implements OnInit {
   logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/']);
-
   }
 
   getCurrentUserName(): string {
