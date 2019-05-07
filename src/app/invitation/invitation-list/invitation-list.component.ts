@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../login-basic/user";
-import {Router} from "@angular/router";
-import {PlayerService} from "../../user/player.service";
-import {AdminService} from "../../user/admin.service";
-import {forkJoin} from "rxjs";
+import {forkJoin} from 'rxjs';
+import {Invitation} from '../invitation';
+import {InvitationService} from '../invitation.service';
 
 @Component({
   selector: 'app-invitation-list',
@@ -12,29 +10,25 @@ import {forkJoin} from "rxjs";
 })
 export class InvitationListComponent implements OnInit {
 
-  public users: User[] = [];
-  public totalUsers = 0;
+  public invitations: Invitation[] = [];
+  public totalInvitations = 0;
 
   constructor(
-    public router: Router,
-    private playerService: PlayerService,
-    private adminService: AdminService) {
-  }
+    private invitationService: InvitationService) {
+    }
 
   ngOnInit() {
     forkJoin(
-      this.playerService.getAll(),
-      this.adminService.getAll())
+      this.invitationService.getAll())
       .subscribe(
-        ([players, admins]) => {
-          this.users = players.concat(admins).sort(
-            (a: User, b: User) => a.username.localeCompare(b.username)
-          );
-          this.totalUsers = this.users.length;
+        ([invitations]) => {
+          this.invitations = invitations;
+          this.totalInvitations = this.invitations.length;
+          console.log(this.invitations);
         });
   }
 
-  showSearchResults(users) {
-    this.users = users;
+  showSearchResults(invitations) {
+    this.invitations = invitations;
   }
 }
