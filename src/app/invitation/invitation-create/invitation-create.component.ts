@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {Admin} from "../../user/admin";
 import {Invitation} from "../invitation";
 import {InvitationService} from "../invitation.service";
 import {PlayerService} from "../../user/player.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Player} from "../../user/player";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-invitation-create',
   templateUrl: '../invitation-form/invitation-form.component.html',
@@ -59,4 +58,9 @@ export class InvitationCreateComponent implements OnInit {
         });*/
 
   }
+
+  storeInvitedPlayer(username): void {
+    this.invitation.setInvitedPlayer(username);
+    //console.log(username);
+    }
 }

@@ -1,13 +1,13 @@
-<h2>Invite player to match</h2>
+<h2>Invite player to game</h2>
 
-<form id="match-invitation-form" [formGroup]="matchInvitationForm" (ngSubmit)="onSubmit()">
+<form id="match-invitation-form" [formGroup]="invitationForm" (ngSubmit)="onSubmit()">
   <fieldset>
 
 
     <div class="row">
       <h3 class="col-md-12">Players</h3>
       <div class="col-md-12">
-        <app-search-player (onSearchited)="onSearch($event)" [players]="players"></app-search-player>
+        <!--<app-search-player (onSearchited)="onSearch($event)" [players]="players"></app-search-player>-->
       </div>
     </div>
 
@@ -33,24 +33,24 @@
 
     <br><br>
     <div class="form-group row"
-         [class.has-error]="matchInvitationForm.controls['message'].touched
+         [class.has-error]="invitationForm.controls['message'].touched
          &&
-          matchInvitationForm.controls['message'].hasError('required')">
+          invitationForm.controls['message'].hasError('required')">
 
       <label class="col-md-6 control-label" for="message">Send a message to player you are inviting</label>
 
       <textarea id="message" type="text" placeholder="Write your message here"
                 class="form-control input-md"
-                [formControl]="matchInvitationForm.controls['message']"
-                [(ngModel)]="matchInvitation.message">
+                [formControl]="invitationForm.controls['message']"
+                [(ngModel)]="invitation.message">
 
       </textarea>
 
 
       <div class="col-md-12">
-        <div *ngIf="matchInvitationForm.controls['message'].touched &&
-                    matchInvitationForm.controls['message'].hasError('required')" class="alert alert-danger">
-          A message is required for now
+        <div *ngIf="invitationForm.controls['message'].touched &&
+                    invitationForm.controls['message'].hasError('required')" class="alert alert-danger">
+          Message is required
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
       <div class="col-md-3"></div>
       <div class="col-md-9">
         <button id="invitePlayer" type="submit"
-                class="btn btn-success pull-right" [disabled]="!matchInvitationForm.valid">Invite
+                class="btn btn-success pull-right" [disabled]="!invitationForm.valid">Invite
         </button>
       </div>
     </div>
