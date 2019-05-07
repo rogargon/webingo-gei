@@ -43,15 +43,19 @@
     </table>
 
     <div class="col mb-3 vertical-center">
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <h6 class="card-subtitle text-muted">Card</h6>
+        <p class="card-text">{{card.id}}</p>
+      </div>
+      <div class="col-md-3">
         <h6 class="card-subtitle text-muted">Player</h6>
         <p class="card-text">User</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <h6 class="card-subtitle text-muted">Game</h6>
         <p class="card-text">1</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <button type="button" class="btn btn-primary" [routerLink]="[card.uri]">Details</button>
       </div>
     </div>
