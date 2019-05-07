@@ -18,7 +18,7 @@ export class InvitationService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
   }
-  // POST /admins
+  // POST /invitations
   create(invitation: Invitation): Observable<Invitation> {
     const body = JSON.stringify(invitation);
     return this.http.post<Invitation>(`${environment.API}/invitations`, body, this.getHttpOptions());
