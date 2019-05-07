@@ -17,6 +17,7 @@ import { AuthInterceptor } from './login-basic/auth-interceptor';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { PlayerService } from './user/player.service';
 import { AdminService } from './user/admin.service';
+import { CardService } from './card/card.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -34,8 +35,6 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
-import { CardCreateComponent } from './card/card-create/card-create.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +53,6 @@ import { CardCreateComponent } from './card/card-create/card-create.component';
     InvitationListComponent,
     GameListComponent,
     CardListComponent,
-    CardCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +70,7 @@ import { CardCreateComponent } from './card/card-create/card-create.component';
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, CardService
   ],
   bootstrap: [AppComponent]
 })
