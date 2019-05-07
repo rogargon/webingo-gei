@@ -9,11 +9,11 @@ describe('User', () => {
 
   it('should accept values in the constructor', () => {
     const user = new User({
-      username: 'user',
+      username: 'player',
       authorities: [{authority: 'ROLE_USER'}],
       password: 'password',
     });
-    expect(user.username).toEqual('user');
+    expect(user.username).toEqual('player');
     expect(user.authorities[0].authority).toEqual('ROLE_USER');
     expect(user.authorization).toEqual('');
     expect(user.password).toEqual('password');

@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { User } from '../../login-basic/user';
+import {Player} from '../player';
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: '../user-form/user-form.component.html'
 })
 export class PlayerEditComponent implements OnInit {
-  public user: User = new User();
+  public user: Player = new Player();
   constructor(private route: ActivatedRoute,
               private router: Router,
               private playerService: PlayerService) {
@@ -25,6 +26,6 @@ export class PlayerEditComponent implements OnInit {
       this.user.authorities = []; // This field is not editable
       this.playerService.update(this.user)
       .subscribe(
-        (player: User) => this.router.navigate([player.uri]));
+        (player: Player) => this.router.navigate([player.uri]));
   }
 }

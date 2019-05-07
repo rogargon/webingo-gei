@@ -9,7 +9,7 @@ import { Player } from '../player';
   templateUrl: '../user-form/user-form.component.html'
 })
 export class PlayerCreateComponent implements OnInit {
-  public user: User;
+  public user: Player;
 
   constructor(private router: Router,
               private playerService: PlayerService) {
