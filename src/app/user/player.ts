@@ -1,3 +1,8 @@
-import { User } from '../login-basic/user';
+import {User} from '../login-basic/user';
+import {Card} from '../card/card';
 
-export class Player extends User { }
+export class Player extends User {
+  // played: Card[] = [];
+  card: Card;
+
+}

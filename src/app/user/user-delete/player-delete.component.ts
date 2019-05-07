@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from '../player.service';
-import { User } from '../../login-basic/user';
+import {Player} from '../player';
 
 @Component({
   selector: 'app-user-delete',
   templateUrl: './user-delete.component.html'
 })
 export class PlayerDeleteComponent implements OnInit {
-  public user: User = new User();
+  public user: Player = new Player();
   private id: string;
   private type: string;
 

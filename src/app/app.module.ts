@@ -34,6 +34,7 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
+import {CardService} from './card/card.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { CardListComponent } from './card/card-list/card-list.component';
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, CardService
   ],
   bootstrap: [AppComponent]
 })

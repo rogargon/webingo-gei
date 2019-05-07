@@ -49,7 +49,7 @@ export class AdminDetailComponent implements OnInit {
           () => this.router.navigate(['users']));
         swalWithBootstrapButtons.fire(
           'Deleted!',
-          'The user ' + this.user.username + ' has been deleted',
+          'The player ' + this.user.username + ' has been deleted',
           'success'
         )
       }

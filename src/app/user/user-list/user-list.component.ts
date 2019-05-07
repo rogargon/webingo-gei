@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../login-basic/user';
-import { PlayerService } from '../player.service';
-import { AdminService } from '../admin.service';
-import { forkJoin } from 'rxjs';
+import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../login-basic/user';
+import {PlayerService} from '../player.service';
+import {AdminService} from '../admin.service';
+import {forkJoin} from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -23,9 +23,9 @@ export class UserListComponent implements OnInit {
     forkJoin(
       this.playerService.getAll(),
       this.adminService.getAll())
-    .subscribe(
+      .subscribe(
         ([players, admins]) => {
-          this.users = players.concat(admins).sort(
+          this.users = (players as User[]).concat(admins).sort(
             (a: User, b: User) => a.username.localeCompare(b.username)
           );
           this.totalUsers = this.users.length;

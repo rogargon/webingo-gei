@@ -1,19 +1,27 @@
 <div class="card mb-4">
   <div class="card-block">
-    <h4 class="card-title col-md-12 p-3">{{user.username}}</h4>
+    <h4 class="card-title col-md-12 p-3">{{player.username}}</h4>
     <div class="card-body row m-1">
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Username</h6>
-        <p class="card-text">{{user.username}}</p>
+        <p class="card-text">{{player.username}}</p>
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">E-Mail</h6>
-        <p class="card-text">{{user.email}}</p>
+        <p class="card-text">{{player.email}}</p>
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Role</h6>
-        <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
+        <p class="card-text">{{player.authorities[0]?.authority.split('_')[1]}}</p>
       </div>
+      <div class="col-12 p-3" *ngIf="player.card">
+        <h6 class="card-subtitle text-muted">Cards:</h6>
+      <p class="card-text">{{player.card.numbers}}</p>
+    </div>
+      <!--<div class="col-12 p-3" *ngIf="player.played.length">
+        <h6 class="card-subtitle text-muted">Played games</h6>
+      <p class="card-text">{{player.played}}</p>
+    </div>-->
 
     </div>
     <div class="card-footer text-right">
