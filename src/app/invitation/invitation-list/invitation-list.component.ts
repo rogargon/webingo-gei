@@ -18,10 +18,9 @@ export class InvitationListComponent implements OnInit {
     }
 
   ngOnInit() {
-    forkJoin(
-      this.invitationService.getAll())
+      this.invitationService.getAll()
       .subscribe(
-        ([invitations]) => {
+        (invitations) => {
           this.invitations = invitations;
           this.totalInvitations = this.invitations.length;
           console.log(this.invitations);
