@@ -32,13 +32,13 @@ export class InvitationCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.playerService.getAll() //TODO: Get the list of players once player team upload their changes
+   /* this.playerService.getAll() //TODO: Get the list of players once player team upload their changes
       .subscribe(
         (players: Player[]) => {
           this.players = players;
           this.totalPlayers = players.length; },
         error => this.errorMessage = <any>error.message);
-
+*/
     this.invitation = new Invitation();
   }
 
