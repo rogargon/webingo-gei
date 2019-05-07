@@ -38,6 +38,7 @@ import { InvitationListComponent } from './invitation/invitation-list/invitation
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
+import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { InvitationCreateComponent } from './invitation/invitation-create/invita
     GameListComponent,
     CardListComponent,
     InvitationCreateComponent,
+    InvitationDetailComponent,
   ],
   imports: [
     BrowserModule,

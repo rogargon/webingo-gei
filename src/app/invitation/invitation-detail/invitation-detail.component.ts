@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PlayerService } from '../player.service';
-import { Player } from '../player';
-import {Invitation} from '../invitation';
+import {ActivatedRoute, Router} from '@angular/router';
 import {InvitationService} from '../invitation.service';
+import {Invitation} from '../invitation';
 
 @Component({
-  selector: 'app-player-detail',
-  templateUrl: './invitation-detail.component.html'
+  selector: 'app-invitation-detail',
+  templateUrl: './invitation-detail.component.html',
+  styleUrls: ['./invitation-detail.component.css']
 })
 export class InvitationDetailComponent implements OnInit {
   public invitation: Invitation = new Invitation();
@@ -20,11 +19,11 @@ export class InvitationDetailComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.invitationService.get(id).subscribe(
-      player => this.user = player);
+      invitation => this.invitation = invitation);
   }
 
   public delete() {
-    this.playerService.delete(this.user).subscribe(
+    this.invitationService.delete(this.invitation).subscribe(
       () => this.router.navigate(['users']));
   }
 }
