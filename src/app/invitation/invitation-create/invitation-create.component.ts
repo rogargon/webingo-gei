@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../login-basic/user";
 import {Router} from "@angular/router";
-import {AdminService} from "../../user/admin.service";
 import {Admin} from "../../user/admin";
+import {Invitation} from "../invitation";
+import {InvitationService} from "../invitation.service";
 
 @Component({
   selector: 'app-invitation-create',
@@ -12,18 +12,18 @@ import {Admin} from "../../user/admin";
 
 export class InvitationCreateComponent implements OnInit {
 
-  public user: User;
+  public invitation: Invitation;
 
   constructor(private router: Router,
-              private adminService: AdminService) {
+              private invitationService: InvitationService) {
   }
 
   ngOnInit() {
-    this.user = new Admin();
+    this.invitation = new Invitation();
   }
 
   onSubmit(): void {
-    this.adminService.create(this.user).subscribe(
+    this.invitationService.create(this.invitation).subscribe(
       (admin: Admin) => this.router.navigate([admin.uri]));
   }
 }
