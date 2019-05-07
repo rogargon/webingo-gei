@@ -12,13 +12,19 @@ h1 {
 }
 table {
   border-collapse: collapse;
+  border-spacing: 10px;
 }
 th, td {
-  padding: 10px;
+  padding: 20px;
   border: 2px #666 solid;
   text-align: center;
-  width: 10%;
+  width: 9%;
 }
 #free, .pickedBG {
   background-color: #f66;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
 }
