@@ -14,8 +14,9 @@ import { PlayerCreateComponent } from './user/user-create/player-create.componen
 import { AdminCreateComponent } from './user/user-create/admin-create.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
-import {CardListComponent} from './card/card-list/card-list.component';
-import {CardDetailComponent} from './card/card-detail/card-detail.component';
+import { CardListComponent } from './card/card-list/card-list.component';
+import { CardDetailComponent } from './card/card-detail/card-detail.component';
+import { CardDeleteComponent } from './card/card-delete/card-delete.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
   { path: 'cards/:id', component: CardDetailComponent, canActivate: [AdministratorGuard] },
+  { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [AdministratorGuard] },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: 'about', pathMatch: 'full' },
 ];
