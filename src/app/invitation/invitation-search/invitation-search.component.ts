@@ -1,7 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { InvitationService } from '../invitation.service';
-import { User } from '../../login-basic/user';
-import { forkJoin } from 'rxjs';
 import {Invitation} from '../invitation';
 import {ActivatedRoute, Router} from '@angular/router';
 
