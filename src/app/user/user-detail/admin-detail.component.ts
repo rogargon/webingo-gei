@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { Admin } from '../admin';
 import Swal from "sweetalert2";
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-admin-detail',
@@ -13,6 +14,7 @@ export class AdminDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private adminService: AdminService,
+              private authenticationService: AuthenticationBasicService,
               private router: Router) {
   }
 
@@ -21,9 +23,11 @@ export class AdminDetailComponent implements OnInit {
     this.adminService.get(id).subscribe(
       admin => this.user = admin);
   }
+  isAdmin(){
+    return this.authenticationService.isAdmin();
+  }
 
   public delete() {
-
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

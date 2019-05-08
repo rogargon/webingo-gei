@@ -4,6 +4,7 @@ import {PlayerService} from '../player.service';
 import {Player} from '../player';
 import Swal from 'sweetalert2';
 import {CardService} from '../../card/card.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -15,6 +16,7 @@ export class PlayerDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private playerService: PlayerService,
               private cardService: CardService,
+              private authenticationService: AuthenticationBasicService,
               private router: Router) {
   }
 
@@ -29,6 +31,10 @@ export class PlayerDetailComponent implements OnInit {
           }
         );
       });
+  }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
   }
 
   public delete() {

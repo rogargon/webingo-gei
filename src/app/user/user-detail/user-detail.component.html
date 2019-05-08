@@ -26,7 +26,7 @@
     </div>
     <div class="card-footer text-right">
         <button id="listBtn" type="button" [routerLink]="['/users']"
-                class="btn m-1 btn-outline-primary">Back
+                class="btn m-1 btn-outline-primary" *ngIf="isAdmin()">Back
         </button>
         <button id="editBtn" type="button" [routerLink]="['edit']"
                 class="btn m-1 btn-outline-success">Edit
