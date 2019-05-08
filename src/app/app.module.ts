@@ -39,6 +39,7 @@ import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
+import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
     CardListComponent,
     InvitationCreateComponent,
     InvitationDetailComponent,
+    InvitationDeleteComponent,
   ],
   imports: [
     BrowserModule,
