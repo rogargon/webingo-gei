@@ -1,11 +1,5 @@
-<div class="row justify-content-between">
-  <div class="col mb-3">
-    <app-user-search (emitResults)="showSearchResults($event)" [users]="cards"></app-user-search>
-  </div>
-</div>
-
-<div class="card mb-1" *ngFor="let card of cards">
-  <div class="card-block row m-1">
+<div class="card mb-4">
+<div class="card row m-1">
     <table>
       <tr>
         <td id="square0">{{card.numbers[0][0] != -1 ? card.numbers[0][0] : ''}}</td>
@@ -43,25 +37,29 @@
     </table>
 
     <div class="col mb-3 vertical-center">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <h6 class="card-subtitle text-muted">Card</h6>
         <p class="card-text">{{card.id}}</p>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <h6 class="card-subtitle text-muted">Player</h6>
         <p class="card-text">User</p>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <h6 class="card-subtitle text-muted">Game</h6>
         <p class="card-text">1</p>
       </div>
-      <div class="col-md-3">
-        <button type="button" class="btn btn-primary" [routerLink]="['/cards', card.id]">Details</button>
-      </div>
     </div>
   </div>
+  <div class="card-footer text-right">
+    <button id="listBtn" type="button" [routerLink]="['/cards']"
+            class="btn m-1 btn-outline-primary">Back
+    </button>
+    <button id="editBtn" type="button" [routerLink]="['edit']"
+            class="btn m-1 btn-outline-success">Edit
+    </button>
+    <button id="deleteBtn" type="button" [routerLink]="['delete']"
+            class="btn m-1 btn-outline-danger">Delete
+    </button>
+  </div>
 </div>
-
-<p i18n class="text-center">Showing {{cards.length}} out of { totalCards, plural,
-  =1 {1 admin}
-  other { {{cards.length}} cards} }</p>
