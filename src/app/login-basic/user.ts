@@ -15,4 +15,12 @@ export class User extends Resource {
     super();
     Object.assign(this as any, values);
   }
+
+  getAuthorities(): string[] {
+    const au: string[] = [];
+    for (const auth of this.authorities) {
+      au.push(auth.authority);
+    }
+    return au;
+  }
 }
