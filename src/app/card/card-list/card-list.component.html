@@ -1,3 +1,8 @@
+<div class="row justify-content-between">
+  <div class="col mb-3">
+    <app-card-search (emitResults)="showSearchResults($event)" [cards]="cards"></app-card-search>
+  </div>
+</div>
 
 <div class="card mb-1" *ngFor="let card of cards">
   <div class="card-block row m-1">

@@ -9,8 +9,8 @@ export class CardService extends RestService<Card> {
   constructor(injector: Injector) {
     super(Card, 'cards', injector);
   }
-  public findById(text: string): Observable<Card[]> {
-    const options: any = {params: [{key: 'text', value: text}]};
+  public findById(id: number): Observable<Card[]> {
+    const options: any = {params: [{key: 'id', value: id}]};
     return this.search('findById', options);
   }
 }

@@ -37,6 +37,7 @@ import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { CardSearchComponent } from './card/card-search/card-search.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { CardDeleteComponent } from './card/card-delete/card-delete.component';
     CardListComponent,
     CardDetailComponent,
     CardDeleteComponent,
+    CardSearchComponent,
   ],
   imports: [
     BrowserModule,
