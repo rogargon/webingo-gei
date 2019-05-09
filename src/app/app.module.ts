@@ -35,6 +35,7 @@ import { InvitationListComponent } from './invitation/invitation-list/invitation
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import {CardService} from './card/card.service';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {CardService} from './card/card.service';
     InvitationListComponent,
     GameListComponent,
     CardListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,12 @@ import {CardService} from './card/card.service';
     AngularHalModule.forRoot(),
     LoginBasicModule,
     ErrorHandlerModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
