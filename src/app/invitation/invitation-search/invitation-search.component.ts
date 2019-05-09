@@ -17,7 +17,7 @@ export class InvitationSearchComponent {
               private router: Router) {
   }
   performSearch(text: string): void {
-      this.invitationService.findByMessageContaining(text)
+      this.invitationService.findByMessageContainingIgnoreCase(text)
     .subscribe(
       (invitations) => {
         this.emitResults.emit(invitations);

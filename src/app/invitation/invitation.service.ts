@@ -9,8 +9,8 @@ export class InvitationService extends RestService<Invitation> {
   constructor(injector: Injector) {
     super(Invitation, 'invitations', injector);
   }
-  public findByMessageContaining(text: string): Observable<Invitation[]> {
+  public findByMessageContainingIgnoreCase(text: string): Observable<Invitation[]> {
     const options: any = {params: [{key: 'text', value: text}]};
-    return this.search('findByMessageContaining', options);
+    return this.search('findByMessageContainingIgnoreCase', options);
   }
 }
