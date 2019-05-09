@@ -17,6 +17,7 @@ import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'cards/:id', component: CardDetailComponent, canActivate: [AdministratorGuard] },
   { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [AdministratorGuard] },
   { path: 'about', component: AboutComponent },
+  {path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
 ];
 

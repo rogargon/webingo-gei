@@ -9,7 +9,7 @@ import { Card } from '../card';
   styleUrls: ['./card-detail.component.css']
 })
 export class CardDetailComponent implements OnInit {
-  public card: Card = new Card();
+  public card: Card;
 
   constructor(private route: ActivatedRoute,
               private cardService: CardService,
@@ -19,11 +19,13 @@ export class CardDetailComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.cardService.get(id).subscribe(
-      card => this.card = card);
+      card => {this.card = card}, error => {
+        this.router.navigate(['404']);
+      });
   }
 
   public delete() {
     this.cardService.delete(this.card).subscribe(
-      () => this.router.navigate(['users']));
+      () => this.router.navigate(['cards']));
   }
 }

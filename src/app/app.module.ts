@@ -38,6 +38,7 @@ import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
 import { CardSearchComponent } from './card/card-search/card-search.component';
+import {NotFoundComponent} from "./error-handler/error-alert/not-found.component";
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { CardSearchComponent } from './card/card-search/card-search.component';
     CardDetailComponent,
     CardDeleteComponent,
     CardSearchComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
