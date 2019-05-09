@@ -46,7 +46,7 @@ export class InvitationCreateComponent implements OnInit {
   }
   onSubmit(): void {
     this.invitationService.create(this.invitation).subscribe(
-      (invitation: Invitation) => this.router.navigate(['/invitations', { id: invitation.id}]));
+      (invitation: Invitation) => this.router.navigate(['/invitations']));
 
 
   }

@@ -24,7 +24,7 @@ export class InvitationEditComponent implements OnInit {
     // this.invitation.authorities = []; // This field is not editable
     this.invitationService.update(this.invitation)
       .subscribe(
-        (invitation: Invitation) => this.router.navigate([invitation.uri]));
+        (invitation: Invitation) => this.router.navigate(['/invitations']));
   }
 
 }
