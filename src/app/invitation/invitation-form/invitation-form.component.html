@@ -1,0 +1,21 @@
+<h2>Invite player to game</h2>
+
+<form id="invitation-form" (ngSubmit)="onSubmit()" #invitationForm="ngForm">
+  <fieldset>
+
+    <div class="form-group" [class.was-validated]="message.dirty || message.touched">
+      <label class="control-label" for="message">Message*</label>
+      <input id="message" name="message" type="text" class="form-control" required
+             [(ngModel)]="invitation.message" #message="ngModel">
+      <div class="invalid-feedback">An Message is required</div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!invitationForm.valid">Submit</button>
+      <button id="listBtn" type="button" [routerLink]="['/invitations']" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
+
