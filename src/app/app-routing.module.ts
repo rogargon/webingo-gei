@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'admins/:id/edit', component: AdminEditComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id/delete', component: AdminDeleteComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id', component: AdminDetailComponent, canActivate: [AdministratorGuard] },
-  { path: 'users', component: UserListComponent, canActivate: [AdministratorGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations', component: InvitationListComponent, canActivate: [AdministratorGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
