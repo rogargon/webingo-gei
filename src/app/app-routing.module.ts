@@ -15,7 +15,6 @@ import { PlayerCreateComponent } from './user/user-create/player-create.componen
 import { AdminCreateComponent } from './user/user-create/admin-create.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
-import { CardListComponent } from './card/card-list/card-list.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
