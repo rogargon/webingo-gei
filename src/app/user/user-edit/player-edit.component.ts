@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { PlayerService } from '../player.service';
-import { User } from '../../login-basic/user';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
+import {PlayerService} from '../player.service';
+import {User} from '../../login-basic/user';
+import {Player} from '../player';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: '../user-form/user-form.component.html'
 })
 export class PlayerEditComponent implements OnInit {
-  public user: User = new User();
+  public user: Player = new Player();
+
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private playerService: PlayerService) {
+              private playerService: PlayerService,
+              private authenticationService: AuthenticationBasicService) {
   }
 
   ngOnInit() {
@@ -22,9 +26,17 @@ export class PlayerEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-      this.user.authorities = []; // This field is not editable
-      this.playerService.update(this.user)
+    this.user.authorities = []; // This field is not editable
+    this.playerService.update(this.user)
       .subscribe(
-        (player: User) => this.router.navigate([player.uri]));
+        (player: Player) => this.router.navigate([player.uri]));
+  }
+
+  isAdmin() {
+   return this.authenticationService.isAdmin();
+  }
+
+  getCurrentUserId(): string {
+    return this.authenticationService.getCurrentUser().id;
   }
 }
