@@ -4,6 +4,7 @@ import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AdministratorGuard } from './login-basic/administrator.guard';
 import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { PlayerListComponent } from './user/user-list/player-list.component';
 import { PlayerDetailComponent } from './user/user-detail/player-detail.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
 import { PlayerDeleteComponent } from './user/user-delete/player-delete.component';
@@ -14,7 +15,7 @@ import { PlayerCreateComponent } from './user/user-create/player-create.componen
 import { AdminCreateComponent } from './user/user-create/admin-create.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
-import {CardListComponent} from './card/card-list/card-list.component';
+import { CardListComponent } from './card/card-list/card-list.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'admins/:id/edit', component: AdminEditComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id/delete', component: AdminDeleteComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id', component: AdminDetailComponent, canActivate: [AdministratorGuard] },
+  { path: 'players', component: PlayerListComponent, canActivate: [LoggedInGuard] },
   { path: 'users', component: UserListComponent, canActivate: [AdministratorGuard] },
   { path: 'invitations', component: InvitationListComponent, canActivate: [AdministratorGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },

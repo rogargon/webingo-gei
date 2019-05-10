@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbCollapseModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbDropdownModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AngularHalModule } from 'angular4-hal-aot';
@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { PlayerListComponent } from './user/user-list/player-list.component';
 import { PlayerDetailComponent } from './user/user-detail/player-detail.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
 import { PlayerDeleteComponent } from './user/user-delete/player-delete.component';
@@ -34,8 +35,8 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
-import {CardService} from './card/card.service';
-import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import { CardService } from './card/card.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     NavbarComponent,
     AboutComponent,
     UserListComponent,
+    PlayerListComponent,
     PlayerDetailComponent,
     AdminDetailComponent,
     PlayerDeleteComponent,
@@ -64,6 +66,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     HttpClientModule,
     NgbCollapseModule,
     NgbDropdownModule,
+    NgbPaginationModule,
     AngularHalModule.forRoot(),
     LoginBasicModule,
     ErrorHandlerModule,
