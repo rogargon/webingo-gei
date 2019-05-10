@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
           Toast.fire({
             type: 'success',
             title: 'Signed in successfully'
-          })
+          });
         });
 
   }
