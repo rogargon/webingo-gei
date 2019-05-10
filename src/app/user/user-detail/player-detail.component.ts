@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PlayerService } from '../player.service';
-import { Player } from '../player';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PlayerService} from '../player.service';
+import {Player} from '../player';
+import Swal from 'sweetalert2';
+import {CardService} from '../../card/card.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -12,17 +15,33 @@ export class PlayerDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private playerService: PlayerService,
+              private cardService: CardService,
+              private authenticationService: AuthenticationBasicService,
               private router: Router) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.playerService.get(id).subscribe(
-      player => this.user = player);
+      player => {
+        this.cardService.getBySelfLink(player._links.card.href).toPromise()
+          .then(card => this.user.card = card)
+          .catch(() => console.log('User doesn\'t have card'));
+        this.user = player;
+      });
+  }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
   }
 
   public delete() {
     this.playerService.delete(this.user).subscribe(
       () => this.router.navigate(['users']));
+    Swal.fire(
+      'Deleted!',
+      'The user ' + this.user.username + ' has been deleted',
+      'success'
+    );
   }
 }
