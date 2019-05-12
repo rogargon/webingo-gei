@@ -45,4 +45,8 @@ export class UserListComponent implements OnInit {
   showSearchResults(users) {
     this.users = users;
   }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
+  }
 }
