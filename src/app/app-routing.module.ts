@@ -15,10 +15,12 @@ import { AdminCreateComponent } from './user/user-create/admin-create.component'
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import {CardListComponent} from './card/card-list/card-list.component';
+import {PlayerRegisterComponent} from "./user/user-register/player-register.component";
 
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
+  { path: 'players/register', component: PlayerRegisterComponent },
   { path: 'players/:id/edit', component: PlayerEditComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id/delete', component: PlayerDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id', component: PlayerDetailComponent, canActivate: [LoggedInGuard] },

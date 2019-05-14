@@ -35,6 +35,7 @@ import { InvitationListComponent } from './invitation/invitation-list/invitation
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import {CardService} from './card/card.service';
+import {PlayerRegisterComponent} from "./user/user-register/player-register.component";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {CardService} from './card/card.service';
     PlayerDeleteComponent,
     AdminDeleteComponent,
     PlayerCreateComponent,
+    PlayerRegisterComponent,
     AdminCreateComponent,
     PlayerEditComponent,
     AdminEditComponent,
