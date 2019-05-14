@@ -43,6 +43,8 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
+import {GameService} from "./game/game.service";
+import {GameSearchComponent} from "./game/game-search/game-search.component";
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { InvitationEditComponent } from './invitation/invitation-edit/invitation
     AdminEditComponent,
     UserSearchComponent,
     GameListComponent,
+    GameSearchComponent,
     CardListComponent,
     InvitationListComponent,
     InvitationEditComponent,
@@ -92,7 +95,7 @@ import { InvitationEditComponent } from './invitation/invitation-edit/invitation
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService,
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, GameService,
     CardService, InvitationService
   ],
   bootstrap: [AppComponent]
