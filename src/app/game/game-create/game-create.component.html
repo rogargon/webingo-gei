@@ -1,1 +1,27 @@
 <h2>Create a new Game</h2>
+<form id="game-create" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- GameName input -->
+    <div class="form-group" [class.was-validated]="username.dirty || username.touched">
+      <label class="control-label" for="gameName">GameName*</label>
+      <input id="gamename" name="gamename" type="text" class="form-control" required
+             [(ngModel)]="game.name" #username="ngModel">
+      <div class="invalid-feedback">A Game Name is required</div>
+    </div>
+
+    <!-- PricePerCard input -->
+    <div class="form-group" [class.was-validated]="email.dirty || email.touched">
+      <label class="control-label" for="gamename">PricePerCard*</label>
+      <input id="pricepercard" name="pricepercard" type="number" class="form-control" required
+             [(ngModel)]="game.pricePerCard" #email="ngModel">
+      <div class="invalid-feedback">A pricePerCard is required</div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+    </div>
+
+  </fieldset>
+</form>
