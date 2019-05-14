@@ -20,6 +20,7 @@ import { InvitationCreateComponent } from './invitation/invitation-create/invita
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
+import {GameCreateComponent} from "./game/game-create/game-create.component";
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'invitations/:id/edit', component: InvitationEditComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations/:id/delete', component: InvitationDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
+  { path: 'games/new', component: GameCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: 'about', pathMatch: 'full' },
