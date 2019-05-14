@@ -14,7 +14,7 @@ import { Sort } from 'angular4-hal-aot';
 export class InvitationListComponent implements OnInit {
 
   public invitations: Invitation[] = [];
-  public pageSize = 12;
+  public pageSize = 10;
   public page = 1;
   public totalInvitations = 0;
   private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
