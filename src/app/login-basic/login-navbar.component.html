@@ -13,3 +13,9 @@
      [routerLink]="['/login']">
     <span class="fa fa-key"></span> Login</a>
 </li>
+
+<li class="nav-item" *ngIf="!isLoggedIn()">
+  <a class="nav-link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+     [routerLink]="['/register']">
+    <span class="fa fa-key"></span> Register</a>
+</li>
