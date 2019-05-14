@@ -21,4 +21,10 @@
   </div>
 </div>
 
-<p i18n class="text-center">Showing {{cards.length}} cards.</p>
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalCards"
+                (pageChange)="changePage()"></ngb-pagination>
+
+<p i18n class="text-center">Showing {{cards.length}} out of { totalCards, plural,
+  =1 {1 admin}
+  other { {{totalCards}} cards} }</p>
