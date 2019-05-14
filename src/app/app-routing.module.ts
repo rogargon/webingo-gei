@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'admins/:id/delete', component: AdminDeleteComponent, canActivate: [AdministratorGuard] },
   { path: 'admins/:id', component: AdminDetailComponent, canActivate: [AdministratorGuard] },
   { path: 'players', component: PlayerListComponent, canActivate: [LoggedInGuard] },
-  { path: 'users', component: UserListComponent, canActivate: [AdministratorGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations', component: InvitationListComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations/new', component: InvitationCreateComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations/:id', component: InvitationDetailComponent, canActivate: [LoggedInGuard] },

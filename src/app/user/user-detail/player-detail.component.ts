@@ -5,6 +5,8 @@ import {Player} from '../player';
 import Swal from 'sweetalert2';
 import {CardService} from '../../card/card.service';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Card} from '../../card/card';
+import {Authority} from '../../login-basic/authority';
 
 @Component({
   selector: 'app-player-detail',
@@ -25,14 +27,18 @@ export class PlayerDetailComponent implements OnInit {
     this.playerService.get(id).subscribe(
       player => {
         this.cardService.getBySelfLink(player._links.card.href).toPromise()
-          .then(card => this.user.card = card)
+          .then((card: Card) => {
+            this.user.card = card;
+          })
           .catch(() => console.log('User doesn\'t have card'));
         this.user = player;
       });
   }
 
   isAdmin() {
-    return this.authenticationService.isAdmin();
+    return this.user.getAuthorities().includes('ROLE_ADMIN');
+
+
   }
 
   public delete() {
