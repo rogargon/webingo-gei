@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {forkJoin} from 'rxjs';
 import {Invitation} from '../invitation';
 import {InvitationService} from '../invitation.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+
 
 @Component({
   selector: 'app-invitation-list',
@@ -14,7 +16,8 @@ export class InvitationListComponent implements OnInit {
   public totalInvitations = 0;
 
   constructor(
-    private invitationService: InvitationService) {
+    private invitationService: InvitationService,
+    private authenticationService: AuthenticationBasicService) {
     }
 
   ngOnInit() {
@@ -29,5 +32,8 @@ export class InvitationListComponent implements OnInit {
 
   showSearchResults(invitations) {
     this.invitations = invitations;
+  }
+  isAdmin(): boolean {
+    return this.authenticationService && this.authenticationService.isAdmin();
   }
 }
