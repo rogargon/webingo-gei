@@ -19,7 +19,7 @@
         </div>
       </li>
       <li class="nav-item" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="adminDropdown" role="button"
+        <a *ngIf="isAdmin()" class="nav-link dropdown-toggle" id="adminDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Administration</a>
         <div class="dropdown-menu" aria-labelledby="adminDropdown" ngbDropdownMenu>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
