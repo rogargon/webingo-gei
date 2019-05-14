@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardService } from '../card.service';
 import { Card } from '../card';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-card-detail',
@@ -27,5 +28,10 @@ export class CardDetailComponent implements OnInit {
   public delete() {
     this.cardService.delete(this.card).subscribe(
       () => this.router.navigate(['cards']));
+    Swal.fire(
+      'Deleted!',
+      'The card ' + this.card.id + ' has been deleted',
+      'success'
+    );
   }
 }

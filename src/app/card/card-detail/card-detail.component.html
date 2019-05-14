@@ -55,8 +55,20 @@
     <button id="listBtn" type="button" [routerLink]="['/cards']"
             class="btn m-1 btn-outline-primary">Back
     </button>
-    <button id="deleteBtn" type="button" [routerLink]="['delete']"
+
+    <button id="deleteBtn" type="button" [swal]="deleteSwal"
             class="btn m-1 btn-outline-danger">Delete
     </button>
+
+    <swal
+      #deleteSwal
+      title="Are you sure?"
+      text="You won't be able to revert this!"
+      type="warning"
+      [customClass]="{confirmButton:'btn btn-success', cancelButton:'btn btn-danger'}"
+      [showCancelButton]="true"
+      [options]="{confirmButtonClass:'m-1',cancelButtonClass:'m-1'}"
+      (confirm)="delete()">
+    </swal>
   </div>
 </div>
