@@ -20,10 +20,12 @@ import { InvitationCreateComponent } from './invitation/invitation-create/invita
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
+import {PlayerRegisterComponent} from './user/user-register/player-register.component';
 
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
+  { path: 'players/register', component: PlayerRegisterComponent},
   { path: 'players/:id/edit', component: PlayerEditComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id/delete', component: PlayerDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id', component: PlayerDetailComponent, canActivate: [LoggedInGuard] },
