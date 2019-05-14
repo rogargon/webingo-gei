@@ -46,7 +46,7 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
-import { NotFoundComponent } from "./error-handler/error-alert/not-found.component";
+import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 @NgModule({
   declarations: [
