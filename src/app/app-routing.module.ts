@@ -21,6 +21,7 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import {GameCreateComponent} from "./game/game-create/game-create.component";
+import {GameDetailComponent} from "./game/game-detail/game-detail.component";
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'invitations/:id/delete', component: InvitationDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'games/new', component: GameCreateComponent, canActivate: [AdministratorGuard] },
+  { path: 'games/:id', component: GameDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
   { path: 'about', component: AboutComponent },
   { path: '', redirectTo: 'about', pathMatch: 'full' },

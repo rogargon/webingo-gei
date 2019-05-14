@@ -46,6 +46,7 @@ import { InvitationEditComponent } from './invitation/invitation-edit/invitation
 import {GameService} from "./game/game.service";
 import {GameSearchComponent} from "./game/game-search/game-search.component";
 import {GameCreateComponent} from "./game/game-create/game-create.component";
+import {GameDetailComponent} from "./game/game-detail/game-detail.component";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {GameCreateComponent} from "./game/game-create/game-create.component";
     UserSearchComponent,
     GameCreateComponent,
     GameListComponent,
+    GameDetailComponent,
     GameSearchComponent,
     CardListComponent,
     InvitationListComponent,
