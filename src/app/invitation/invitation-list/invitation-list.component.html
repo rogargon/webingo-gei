@@ -26,7 +26,8 @@
   </div>
 </div>
 
-<p i18n class="text-center">Showing {{invitations.length}} out of { totalInvitations, plural,
-  =1 {1 admin}
-  other { {{totalInvitations}} invitations} }</p>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalInvitations"
+                (pageChange)="changePage()"></ngb-pagination>
 
