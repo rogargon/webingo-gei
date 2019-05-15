@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from "../game";
 import {Router} from "@angular/router";
 import {GameService} from "../game.service";
+import {GameAdminService} from "../game-admin.service";
 
 @Component({
   selector: 'app-game-list',
@@ -9,23 +10,23 @@ import {GameService} from "../game.service";
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
-  public games: Game[] = [];
+  public gamesList: Game[] = [];
   public totalGames = 0;
 
   constructor(public router: Router,
-              private gameService: GameService) {
+              private gameService: GameAdminService) {
   }
 
   ngOnInit() {
     this.gameService.getAll()
       .subscribe(
-        (games) => {
-          this.games = games.sort((a, b) => a.name.localeCompare(b.name));
-          this.totalGames = this.games.length;
+        (gamesList) => {
+          this.gamesList = gamesList.sort((a, b) => a.name.localeCompare(b.name));
+          this.totalGames = this.gamesList.length;
         });
   }
 
-  showSearchResults(games) {
-    this.games = games;
+  showSearchResults(gamesList) {
+    this.gamesList = gamesList;
   }
 }

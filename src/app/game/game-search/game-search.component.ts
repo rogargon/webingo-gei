@@ -1,6 +1,7 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
 import {GameService} from "../game.service";
 import {Game} from "../game";
+import {GameAdminService} from "../game-admin.service";
 
 @Component({
   selector: 'app-game-search',
@@ -8,10 +9,10 @@ import {Game} from "../game";
 })
 
 export class GameSearchComponent {
-  @Input() games: Game[];
+  @Input() gamesList: Game[];
   @Output() emitResults: EventEmitter<any> = new EventEmitter();
 
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameAdminService) {
   }
 
   performSearch(text: string): void {

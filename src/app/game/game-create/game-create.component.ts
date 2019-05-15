@@ -2,21 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {GameService} from "../game.service";
 import {Game} from "../game";
+import {GameAdminService} from "../game-admin.service";
 
 @Component({
   selector: 'app-game-create',
   templateUrl: 'game-create.component.html',
-  providers: [GameService]
+  providers: [GameAdminService]
 })
 
 
 export class GameCreateComponent implements OnInit {
 
   public game: Game;
-  public games: Game[] = [];
 
   constructor(private router: Router,
-              private gameService: GameService) {
+              private gameService: GameAdminService) {
   }
 
   ngOnInit() {

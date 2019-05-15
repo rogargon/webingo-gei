@@ -1,6 +1,6 @@
 <div class="row justify-content-between">
   <div class="col mb-3">
-    <app-game-search (emitResults)="showSearchResults($event)" [games]="games"></app-game-search>
+    <app-game-search (emitResults)="showSearchResults($event)" [gamesList]="gamesList"></app-game-search>
   </div>
   <div class="col mb-3">
     <button id="newGameBtn" class="btn btn-success pull-right" type="button"
@@ -8,9 +8,10 @@
   </div>
 </div>
 
-<div class="card mb-1" *ngFor="let game of games">
+<div class="card mb-1" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
-    <h4 class="card-header col-md-12 p-1"><a [routerLink]="[game.uri]">{{game.name}}</a></h4>
+    <h4 class="card-header col-md-12 p-1">
+      <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
     <div class="col-4 p-1 mt-1">
       <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Name</h6>
       <p class="card-text">{{game.name}}</p>
@@ -26,6 +27,4 @@
   </div>
 </div>
 
-<p i18n class="text-center">Showing {{games.length}} out of { totalGames, plural,
-  =1 {1 admin}
-  other { {{totalGames}} games} }</p>
+<p i18n class="text-center">Showing {{gamesList.length}} out of {{totalGames}} games</p>

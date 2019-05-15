@@ -20,7 +20,7 @@ export class GameAdminService {
   // GET /games
   getAll(): Observable<Game[]> {
     return this.http.get(`${environment.API}/games`).pipe(
-      map((res: any) => res._embedded.admins)
+      map((res: any) => res._embedded.games)
     );
   }
 
@@ -32,7 +32,7 @@ export class GameAdminService {
   // POST /games
   create(game: Game): Observable<Game> {
     const body = JSON.stringify(game);
-    return this.http.post<Game>(`${environment.API}/ganes`, body, this.getHttpOptions());
+    return this.http.post<Game>(`${environment.API}/games`, body, this.getHttpOptions());
   }
 
   // PUT /games/{id}

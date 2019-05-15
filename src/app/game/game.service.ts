@@ -14,12 +14,6 @@ export class GameService extends RestService<Game> {
     super(Game, 'games', injector);
   }
 
-  private getHttpOptions() {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-  }
-
   public findGameByName(text: string): Observable<Game[]> {
     const options: any = {params: [{key: 'text', value: text}]};
     return this.search('findGameByName', options);
