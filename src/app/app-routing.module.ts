@@ -25,7 +25,7 @@ import {PlayerRegisterComponent} from './user/user-register/player-register.comp
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
-  { path: 'players/register', component: PlayerRegisterComponent},
+  { path: 'register', component: PlayerRegisterComponent},
   { path: 'players/:id/edit', component: PlayerEditComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id/delete', component: PlayerDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id', component: PlayerDetailComponent, canActivate: [LoggedInGuard] },
