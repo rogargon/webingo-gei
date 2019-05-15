@@ -1,4 +1,5 @@
 import { Resource } from 'angular4-hal-aot';
+import { PlayerService } from '../user/player.service';
 
 export class Card extends Resource {
   rows: number;
@@ -7,6 +8,7 @@ export class Card extends Resource {
   id: number;
   numbers: number[][];
   // game: Game;
+  username: string;
 
   constructor(values: object = {}) {
     super();

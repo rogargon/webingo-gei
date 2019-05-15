@@ -6,6 +6,7 @@ import {AuthenticationBasicService} from '../../login-basic/authentication-basic
 import {PlayerService} from '../../user/player.service';
 import {logger} from 'codelyzer/util/logger';
 import { Sort } from 'angular4-hal-aot';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-card-list',
@@ -30,6 +31,10 @@ export class CardListComponent implements OnInit {
         this.cardService.getAll({size: this.pageSize, sort: this.sorting})
           .subscribe((cards) => {
             this.cards = cards;
+            for (let i = 0, len = this.cards.length; i < len; i++) {
+              this.playerService.findByCard(this.cards[i].uri)
+                .subscribe(player => this.cards[i].username = player[0] != null ? player[0].username : '-');
+            }
             this.totalCards = this.cardService.totalElement();
           });
       }

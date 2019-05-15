@@ -16,8 +16,8 @@ export class PlayerService extends RestService<Player> {
     return this.search('findByUsernameContaining', options);
   }
 
-  public findByCard(card: Card): Observable<Player[]> {
-    const options: any = {params: [{key: 'text', value: card}]};
+  public findByCard(card: string): Observable<Player[]> {
+    const options: any = {params: [{key: 'card', value: card}]};
     return this.search('findByCard', options);
   }
 }
