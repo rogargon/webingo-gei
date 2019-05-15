@@ -30,7 +30,7 @@ export class GameDetailComponent implements OnInit {
     return this.authenticationService.isAdmin();
   }
 
-  public delete() {
+  public Submit() {
     this.gameService.delete(this.game).subscribe(
       () => this.router.navigate(['games']));
     Swal.fire(
