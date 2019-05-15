@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardService } from '../card.service';
 import { Card } from '../card';
 import Swal from "sweetalert2";
+import {PlayerService} from '../../user/player.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -14,13 +15,18 @@ export class CardDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private cardService: CardService,
+              private playerService: PlayerService,
               private router: Router) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.cardService.get(id).subscribe(
-      card => {this.card = card}, error => {
+      card => {
+        this.card = card;
+        this.playerService.findByCard(this.card.uri)
+          .subscribe(player => this.card.username = player[0] != null ? player[0].username : '-');
+      }, error => {
         this.router.navigate(['404']);
       });
   }
