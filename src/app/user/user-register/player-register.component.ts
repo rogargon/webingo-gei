@@ -23,7 +23,8 @@ export class PlayerRegisterComponent implements OnInit {
   onSubmit(): void {
 
     this.playerService.create(this.user).subscribe(
-      (player: Player) => this.router.navigate([player.uri]));
+      // (player: Player) => this.router.navigate([player.uri])
+    );
     this.router.navigateByUrl('/login');
   }
 }
