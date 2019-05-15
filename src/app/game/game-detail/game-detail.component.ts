@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Game} from "../game";
 import {GameService} from "../game.service";
+import {GameAdminService} from "../game-admin.service";
 
 @Component({
   selector: 'app-game-detail',

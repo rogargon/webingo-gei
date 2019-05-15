@@ -47,6 +47,7 @@ import {GameService} from "./game/game.service";
 import {GameSearchComponent} from "./game/game-search/game-search.component";
 import {GameCreateComponent} from "./game/game-create/game-create.component";
 import {GameDetailComponent} from "./game/game-detail/game-detail.component";
+import {GameAdminService} from "./game/game-admin.service";
 
 @NgModule({
   declarations: [
@@ -99,7 +100,7 @@ import {GameDetailComponent} from "./game/game-detail/game-detail.component";
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, GameService,
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, GameService, GameAdminService,
     CardService, InvitationService
   ],
   bootstrap: [AppComponent]

@@ -20,14 +20,12 @@ export class GameListComponent implements OnInit {
     this.gameService.getAll()
       .subscribe(
         (games) => {
-          this.games = games;
+          this.games = games.sort((a, b) => a.name.localeCompare(b.name));
           this.totalGames = this.games.length;
-          console.log(this.games);
         });
   }
 
   showSearchResults(games) {
-    console.log(games);
     this.games = games;
   }
 }

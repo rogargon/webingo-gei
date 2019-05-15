@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {User} from '../../login-basic/user';
 import {GameService} from "../game.service";
+import {Game} from "../game";
 
 @Component({
   selector: 'app-game-search',
@@ -8,7 +8,7 @@ import {GameService} from "../game.service";
 })
 
 export class GameSearchComponent {
-  @Input() games: User[];
+  @Input() games: Game[];
   @Output() emitResults: EventEmitter<any> = new EventEmitter();
 
   constructor(private gameService: GameService) {
@@ -18,7 +18,7 @@ export class GameSearchComponent {
     this.gameService.findGameByName(text)
       .subscribe(
         (games) => {
-          this.emitResults.emit(games);
+          this.emitResults.emit(games.sort((a, b) => a.name.localeCompare(b.name)));
         });
   }
 }

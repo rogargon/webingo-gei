@@ -1,1 +1,45 @@
 <h1>Detalle</h1>
+
+<div class="card mb-4">
+  <div class="card-block">
+    <h4 class="card-title col-md-12 p-3">{{game.name}}</h4>
+    <div class="card-body row m-1">
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+        <p class="card-text">{{game.id}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">PricePerCard</h6>
+        <p class="card-text">{{game.pricePerCard}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Uri</h6>
+        <p class="card-text">{{game.uri}}</p>
+      </div>
+
+    </div>
+    <div class="card-footer text-right">
+      <button id="listBtn" type="button" [routerLink]="['/games']"
+              class="btn m-1 btn-outline-primary" *ngIf="isAdmin()">Back
+      </button>
+      <button id="editBtn" type="button" [routerLink]="['edit']"
+              class="btn m-1 btn-outline-success">Edit
+      </button>
+      <!--[routerLink]="['delete']"-->
+      <button id="deleteBtn" type="button" *ngIf="isAdmin()" [swal]="deleteSwal"
+              class="btn m-1 btn-outline-danger">Delete
+      </button>
+
+      <swal
+        #deleteSwal
+        title="Are you sure?"
+        text="You won't be able to revert this!"
+        type="warning"
+        [customClass]="{confirmButton:'btn btn-success', cancelButton:'btn btn-danger'}"
+        [showCancelButton]="true"
+        [options]="{confirmButtonClass:'m-1',cancelButtonClass:'m-1'}"
+        (confirm)="delete()">
+      </swal>
+    </div>
+  </div>
+</div>
