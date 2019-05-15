@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../../login-basic/user';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-player-register',
@@ -21,6 +22,16 @@ export class PlayerRegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    Toast.fire({
+      type: 'success',
+      title: 'User registered successfully'
+    });
 
     this.playerService.create(this.user).subscribe(
       // (player: Player) => this.router.navigate([player.uri])

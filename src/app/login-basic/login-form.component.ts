@@ -4,6 +4,8 @@ import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {User} from './user';
+import {Router} from '@angular/router';
+import {invalid} from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +16,8 @@ export class LoginFormComponent implements OnInit {
   user: User;
 
   constructor(private authenticationService: AuthenticationBasicService,
-              private location: Location) {
+              private location: Location,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -40,7 +43,6 @@ export class LoginFormComponent implements OnInit {
       .subscribe(
         user => {
           this.authenticationService.storeCurrentUser(user);
-          this.location.back();
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -52,6 +54,7 @@ export class LoginFormComponent implements OnInit {
             title: 'Signed in successfully'
           });
         });
+    this.router.navigateByUrl('');
 
   }
 
