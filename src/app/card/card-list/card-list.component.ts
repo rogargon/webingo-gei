@@ -32,6 +32,7 @@ export class CardListComponent implements OnInit {
         this.playerService.findByUsernameContaining(this.authenticationService.getCurrentUser().username)
           .subscribe((player) => {
             this.http.get<Card>(player[0]._links.card.href).subscribe((card) => {
+              card.player = player[0];
               this.cards = [card];
               this.totalCards = this.cards.length;
             });
