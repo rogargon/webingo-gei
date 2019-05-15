@@ -15,6 +15,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CardListComponent implements OnInit {
   public cards: Card[] = [];
+  public beforeSearch: Card[] = [];
   public totalCards = 0;
   public pageSize = 10;
   public page = 1;
@@ -39,9 +40,13 @@ export class CardListComponent implements OnInit {
         this.cardService.getAll({size: this.pageSize, sort: this.sorting})
           .subscribe((cards) => {
             this.cards = cards;
+            this.beforeSearch = cards;
             for (let i = 0, len = this.cards.length; i < len; i++) {
               this.playerService.findByCard(this.cards[i].uri)
-                .subscribe(player => this.cards[i].player = player[0]);
+                .subscribe(player => {
+                  this.cards[i].player = player[0];
+                  this.beforeSearch[i].player = player[0];
+                });
             }
             this.totalCards = this.cardService.totalElement();
           });
