@@ -33,7 +33,7 @@ export class CardListComponent implements OnInit {
             this.cards = cards;
             for (let i = 0, len = this.cards.length; i < len; i++) {
               this.playerService.findByCard(this.cards[i].uri)
-                .subscribe(player => this.cards[i].username = player[0] != null ? player[0].username : '-');
+                .subscribe(player => this.cards[i].player = player[0]);
             }
             this.totalCards = this.cardService.totalElement();
           });

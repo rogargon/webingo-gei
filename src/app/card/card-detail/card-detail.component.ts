@@ -25,7 +25,7 @@ export class CardDetailComponent implements OnInit {
       card => {
         this.card = card;
         this.playerService.findByCard(this.card.uri)
-          .subscribe(player => this.card.username = player[0] != null ? player[0].username : '-');
+          .subscribe(player => this.card.player = player[0]);
       }, error => {
         this.router.navigate(['404']);
       });
