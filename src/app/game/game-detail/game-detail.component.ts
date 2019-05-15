@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Game} from "../game";
-import {GameService} from "../game.service";
 import {GameAdminService} from "../game-admin.service";
 
 @Component({
@@ -14,15 +13,14 @@ export class GameDetailComponent implements OnInit {
   public game: Game = new Game();
 
   constructor(private route: ActivatedRoute,
-              private gameService: GameService,
+              private gameService: GameAdminService,
               private authenticationService: AuthenticationBasicService,
               private router: Router) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.gameService.get(id).subscribe(
-      game => {
+    this.gameService.get(id).subscribe(game => {
         this.game = game;
       }
     );

@@ -1,23 +1,33 @@
-<h1>Detalle</h1>
-
 <div class="card mb-4">
   <div class="card-block">
-    <h4 class="card-title col-md-12 p-3">{{game.name}}</h4>
+    <h4 class="card-title col-md-12 p-3"><u><a [routerLink]="[game.uri]">{{game.name}}</a></u> - Game Details</h4>
     <div class="card-body row m-1">
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Id</h6>
         <p class="card-text">{{game.id}}</p>
       </div>
       <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <p class="card-text">{{game.name}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Status</h6>
+        <p class="card-text">{{game.status}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Jackpot</h6>
+        <p class="card-text">{{game.jackpot}}</p>
+      </div>
+      <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">PricePerCard</h6>
         <p class="card-text">{{game.pricePerCard}}</p>
       </div>
       <div class="col-md-4 p-3">
-        <h6 class="card-subtitle text-muted">Uri</h6>
-        <p class="card-text">{{game.uri}}</p>
+        <h6 class="card-subtitle text-muted">CreatedAt</h6>
+        <p class="card-text">{{game.createdAt}}</p>
       </div>
-
     </div>
+
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['/games']"
               class="btn m-1 btn-outline-primary" *ngIf="isAdmin()">Back
