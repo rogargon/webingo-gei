@@ -30,10 +30,10 @@
 
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['/games']"
-              class="btn m-1 btn-outline-primary" *ngIf="isAdmin()">Back
+              class="btn m-1 btn-outline-primary">Back
       </button>
       <button id="editBtn" type="button" [routerLink]="['edit']"
-              class="btn m-1 btn-outline-success">Edit
+              class="btn m-1 btn-outline-success" *ngIf="isAdmin()">Edit
       </button>
       <!--[routerLink]="['delete']"-->
       <button id="deleteBtn" type="button" *ngIf="isAdmin()" [swal]="deleteSwal"

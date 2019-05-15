@@ -3,6 +3,7 @@ import {Game} from "../game";
 import {Router} from "@angular/router";
 import {GameService} from "../game.service";
 import {GameAdminService} from "../game-admin.service";
+import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
 
 @Component({
   selector: 'app-game-list',
@@ -14,7 +15,8 @@ export class GameListComponent implements OnInit {
   public totalGames = 0;
 
   constructor(public router: Router,
-              private gameService: GameAdminService) {
+              private gameService: GameAdminService,
+              private authenticationService: AuthenticationBasicService) {
   }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class GameListComponent implements OnInit {
           this.gamesList = gamesList.sort((a, b) => a.name.localeCompare(b.name));
           this.totalGames = this.gamesList.length;
         });
+  }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
   }
 
   showSearchResults(gamesList) {
