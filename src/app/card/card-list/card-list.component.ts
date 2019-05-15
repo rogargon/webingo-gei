@@ -7,6 +7,7 @@ import {PlayerService} from '../../user/player.service';
 import {logger} from 'codelyzer/util/logger';
 import { Sort } from 'angular4-hal-aot';
 import {forEach} from '@angular/router/src/utils/collection';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-card-list',
@@ -19,14 +20,21 @@ export class CardListComponent implements OnInit {
   public page = 1;
   private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
   constructor(
-    private cardService: CardService, private authenticationService: AuthenticationBasicService, private playerService: PlayerService) {
+    private cardService: CardService,
+    private authenticationService: AuthenticationBasicService,
+    private playerService: PlayerService,
+    private http: HttpClient) {
   }
 
   ngOnInit() {
       if (!this.authenticationService.isAdmin()) {
         this.playerService.findByUsernameContaining(this.authenticationService.getCurrentUser().username)
-          .subscribe(player => this.cards = [player[0].card]);
-        this.totalCards = this.cardService.totalElement();
+          .subscribe((player) => {
+            this.http.get<Card>(player[0]._links.card.href).subscribe((card) => {
+              this.cards = [card];
+              this.totalCards = this.cards.length;
+            });
+          });
       } else {
         this.cardService.getAll({size: this.pageSize, sort: this.sorting})
           .subscribe((cards) => {
