@@ -17,11 +17,9 @@ import {AuthenticationBasicService} from "../../login-basic/authentication-basic
 export class InvitationCreateComponent implements OnInit {
 
   public invitation: Invitation;
-  // public invitationForm: FormGroup;
   public players: Player[] = [];
   public totalPlayers = 0;
   public errorMessage: string;
-  asd: Player = new Player();
 
   constructor(private router: Router,
               private invitationService: InvitationService,
