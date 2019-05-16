@@ -4,6 +4,7 @@ import {Invitation} from "../invitation";
 import {InvitationService} from "../invitation.service";
 import {PlayerService} from "../../user/player.service";
 import {Player} from "../../user/player";
+import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
 
 @Component({
   selector: 'app-invitation-create',
@@ -24,14 +25,18 @@ export class InvitationCreateComponent implements OnInit {
 
   constructor(private router: Router,
               private invitationService: InvitationService,
-              private playerService: PlayerService) {
+              private playerService: PlayerService,
+              private authentication: AuthenticationBasicService) {
   }
 
   ngOnInit() {
     this.playerService.getAll()
       .subscribe(
         players => {
-          this.players = players;
+          const user = this.authentication.getCurrentUser();
+          this.players = players.filter(player => {
+            return player.id !== user.id;
+          });
         });
     this.invitation = new Invitation();
   }
