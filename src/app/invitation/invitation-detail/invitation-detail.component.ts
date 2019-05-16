@@ -11,7 +11,8 @@ import { Player } from '../../user/player';
 })
 export class InvitationDetailComponent implements OnInit {
   public invitation: Invitation = new Invitation();
-  createdBy: any;
+  createdBy: Player = new Player();
+  invites: Player = new Player();
 
   constructor(private route: ActivatedRoute,
               private invitationService: InvitationService,
@@ -28,6 +29,10 @@ export class InvitationDetailComponent implements OnInit {
           createdBy => {
           this.createdBy = createdBy;
         });
+        invitation.getRelation(Player, 'invites').subscribe(
+          invites => {
+            this.invites = invites;
+          });
       });
   }
 
