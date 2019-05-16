@@ -1,0 +1,27 @@
+<form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <label class="control-label">Player*</label>
+    <div class="select-style" style="width:200px;">
+      <select>
+        <option *ngFor="let player of players" value="{{player.id}}">{{player.id}}</option>
+      </select>
+      <div class="invalid-feedback">A player is required</div>
+    </div>
+
+    <label class="control-label">Game*</label>
+    <div class="select-style" style="width:200px;">
+      <select>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <div class="invalid-feedback">A player is required</div>
+    </div>
+
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="listBtn" type="button" [routerLink]="['/cards']" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+  </fieldset>
+</form>
