@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Name</h6>
-        <input type="text" class="card-text" placeholder={{game.name}}>
+        <input type="text" class="card-text" [(ngModel)]="game.name">
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">Status</h6>
@@ -20,7 +20,7 @@
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">PricePerCard</h6>
-        <input type="text" class="card-text" placeholder="{{game.pricePerCard}}">
+        <input type="text" class="card-text" [(ngModel)]="game.pricePerCard">
       </div>
       <div class="col-md-4 p-3">
         <h6 class="card-subtitle text-muted">CreatedAt</h6>
@@ -32,7 +32,7 @@
       <button id="listBtn" type="button" [routerLink]="[game.uri]"
               class="btn m-1 btn-outline-primary">Back
       </button>
-      <button id="editBtn" type="button" [routerLink]="['/games/game.id/edit']"
+      <button id="editBtn" type="button"
               class="btn m-1 btn-outline-success" [swal]="editSwal">Submit
       </button>
       <swal

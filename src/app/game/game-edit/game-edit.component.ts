@@ -40,17 +40,13 @@ export class GameEditComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+  edit(): void {
     this.gameService.update(this.game).subscribe(
-      (game: Game) => this.router.navigate(['/games']));
+      (game: Game) => this.router.navigate([game.uri]));
     Swal.fire(
       'Edited!',
       'The game ' + this.game.name + ' has been edited',
       'success'
     );
-  }
-
-  edit() {
-
   }
 }
