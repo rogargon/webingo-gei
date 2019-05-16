@@ -24,12 +24,21 @@ export class InvitationListComponent implements OnInit {
     }
 
   ngOnInit() {
+    if (this.isAdmin()) {
+      this.invitationService.getAll({size: this.pageSize, sort: this.sorting})
+        .subscribe(
+          (invitations) => {
+            this.invitations = invitations;
+            this.totalInvitations = this.invitationService.totalElement();
+          });
+    } else {
       this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting)
-      .subscribe(
-        (invitations) => {
-          this.invitations = invitations;
-          this.totalInvitations = this.invitationService.totalElement();
-        });
+        .subscribe(
+          (invitations) => {
+            this.invitations = invitations;
+            this.totalInvitations = this.invitationService.totalElement();
+          });
+    }
   }
 
   showSearchResults(invitations) {
