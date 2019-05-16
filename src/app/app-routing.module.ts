@@ -22,7 +22,6 @@ import { InvitationDeleteComponent } from './invitation/invitation-delete/invita
 import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
-import { CardCreateComponent } from './card/card-create/card-create.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 
@@ -44,7 +43,6 @@ const routes: Routes = [
   { path: 'invitations/:id/delete', component: InvitationDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
-  { path: 'cards/new', component: CardCreateComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
