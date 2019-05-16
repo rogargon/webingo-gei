@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {forkJoin} from 'rxjs';
-import {Invitation} from '../invitation';
-import {InvitationService} from '../invitation.service';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import { Invitation } from '../invitation';
+import { InvitationService } from '../invitation.service';
+import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
 import { Sort } from 'angular4-hal-aot';
 
 
@@ -14,7 +13,7 @@ import { Sort } from 'angular4-hal-aot';
 export class InvitationListComponent implements OnInit {
 
   public invitations: Invitation[] = [];
-  public pageSize = 10;
+  public pageSize = 3;
   public page = 1;
   public totalInvitations = 0;
   private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
@@ -25,12 +24,11 @@ export class InvitationListComponent implements OnInit {
     }
 
   ngOnInit() {
-      this.invitationService.getAll({size: this.pageSize, sort: this.sorting})
+      this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting)
       .subscribe(
         (invitations) => {
           this.invitations = invitations;
           this.totalInvitations = this.invitationService.totalElement();
-          console.log(this.invitations);
         });
   }
 
