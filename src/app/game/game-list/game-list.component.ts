@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {GameService} from "../game.service";
 import {GameAdminService} from "../game-admin.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-game-list',

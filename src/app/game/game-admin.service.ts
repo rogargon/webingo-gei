@@ -47,8 +47,8 @@ export class GameAdminService {
   }
 
   // GET /games/search/findGameByName?text={text}
-  findGameByName(text: string): Observable<Game[]> {
-    return this.http.get(`${environment.API}/games/search/findGameByName?text=${text}`).pipe(
+  findGameByNameContaining(text: string): Observable<Game[]> {
+    return this.http.get(`${environment.API}/games/search/findGameByNameContaining?text=${text}`).pipe(
       map((res: any) => res._embedded.games)
     );
   }

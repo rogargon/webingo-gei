@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="card mb-1">
+  <div class="card-block">
+    <h4 class="card-header text-left"><u><a [routerLink]="[game.uri]">{{game.name}}</a></u> - Game Details</h4>
+    <div class="card-body row m-1">
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+        <p class="card-text">{{game.id}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <input type="text" class="card-text" placeholder={{game.name}}>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Status</h6>
+        <p class="card-text">{{game.status}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Jackpot</h6>
+        <p class="card-text">{{game.jackpot}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">PricePerCard</h6>
+        <input type="text" class="card-text" placeholder="{{game.pricePerCard}}">
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">CreatedAt</h6>
+        <p class="card-text">{{game.createdAt}}</p>
+      </div>
+    </div>
 
-</body>
-</html>
+    <div class="card-footer text-right">
+      <button id="listBtn" type="button" [routerLink]="[game.uri]"
+              class="btn m-1 btn-outline-primary">Back
+      </button>
+      <button id="editBtn" type="button" [routerLink]="['/games/game.id/edit']"
+              class="btn m-1 btn-outline-success" [swal]="editSwal">Submit
+      </button>
+      <swal
+        #editSwal
+        title="Are you sure?"
+        type="question"
+        [customClass]="{confirmButton:'btn btn-success', cancelButton:'btn btn-danger'}"
+        [showCancelButton]="true"
+        [options]="{confirmButtonClass:'m-1',cancelButtonClass:'m-1'}"
+        (confirm)="edit()">
+      </swal>
+    </div>
+  </div>
+</div>

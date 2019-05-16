@@ -49,4 +49,8 @@ export class GameEditComponent implements OnInit {
       'success'
     );
   }
+
+  edit() {
+
+  }
 }

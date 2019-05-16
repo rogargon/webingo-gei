@@ -16,7 +16,7 @@ export class GameSearchComponent {
   }
 
   performSearch(text: string): void {
-    this.gameService.findGameByName(text)
+    this.gameService.findGameByNameContaining(text)
       .subscribe(
         (games) => {
           this.emitResults.emit(games.sort((a, b) => a.name.localeCompare(b.name)));
