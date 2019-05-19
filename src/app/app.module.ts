@@ -38,17 +38,21 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
+import { CardDetailComponent } from './card/card-detail/card-detail.component';
+import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { CardSearchComponent } from './card/card-search/card-search.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
-import {GameService} from "./game/game.service";
-import {GameSearchComponent} from "./game/game-search/game-search.component";
-import {GameCreateComponent} from "./game/game-create/game-create.component";
-import {GameDetailComponent} from "./game/game-detail/game-detail.component";
-import {GameAdminService} from "./game/game-admin.service";
-import {GameEditComponent} from "./game/game-edit/game-edit.component";
+import { GameService } from "./game/game.service";
+import { GameSearchComponent } from "./game/game-search/game-search.component";
+import { GameCreateComponent } from "./game/game-create/game-create.component";
+import { GameDetailComponent } from "./game/game-detail/game-detail.component";
+import { GameAdminService } from "./game/game-admin.service";
+import { GameEditComponent } from "./game/game-edit/game-edit.component";
+import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 @NgModule({
   declarations: [
@@ -72,12 +76,16 @@ import {GameEditComponent} from "./game/game-edit/game-edit.component";
     GameSearchComponent,
     GameEditComponent,
     CardListComponent,
+    CardDetailComponent,
+    CardDeleteComponent,
+    CardSearchComponent,
     InvitationListComponent,
     InvitationEditComponent,
     InvitationSearchComponent,
     InvitationCreateComponent,
     InvitationDetailComponent,
     InvitationDeleteComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,8 +110,8 @@ import {GameEditComponent} from "./game/game-edit/game-edit.component";
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
-    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService, GameService, GameAdminService,
-    CardService, InvitationService
+    AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService,
+    GameService, GameAdminService, CardService, InvitationService
   ],
   bootstrap: [AppComponent]
 })
