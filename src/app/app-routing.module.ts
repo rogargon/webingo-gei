@@ -15,11 +15,14 @@ import { PlayerCreateComponent } from './user/user-create/player-create.componen
 import { AdminCreateComponent } from './user/user-create/admin-create.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
-import { CardListComponent } from './card/card-list/card-list.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
+import { CardListComponent } from './card/card-list/card-list.component';
+import { CardDetailComponent } from './card/card-detail/card-detail.component';
+import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 
 const routes: Routes = [
@@ -39,8 +42,11 @@ const routes: Routes = [
   { path: 'invitations/:id/edit', component: InvitationEditComponent, canActivate: [LoggedInGuard] },
   { path: 'invitations/:id/delete', component: InvitationDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
-  { path: 'cards', component: CardListComponent, canActivate: [AdministratorGuard] },
+  { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
+  { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full' },
 ];
 
