@@ -5,8 +5,8 @@ export class Game extends Resource {
   id: string;
   name: string;
   uri: string;
-  pricePerCard: Number;
+  pricePerCard: number;
   status: string;
-  jackpot: Number;
+  jackpot: number;
   createdAt: string;
 }
