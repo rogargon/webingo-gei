@@ -4,10 +4,12 @@ import {Invitation} from "../invitation";
 import {InvitationService} from "../invitation.service";
 import {PlayerService} from "../../user/player.service";
 import {Player} from "../../user/player";
+import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
 
 @Component({
   selector: 'app-invitation-create',
   templateUrl: '../invitation-form/invitation-form.component.html',
+  styleUrls : ['../invitation-form/invitation-form.css'],
   providers: [InvitationService, PlayerService]
 })
 
@@ -15,29 +17,25 @@ import {Player} from "../../user/player";
 export class InvitationCreateComponent implements OnInit {
 
   public invitation: Invitation;
-  //public invitationForm: FormGroup;
   public players: Player[] = [];
   public totalPlayers = 0;
   public errorMessage: string;
 
   constructor(private router: Router,
               private invitationService: InvitationService,
-              /*private formBuilder: FormBuilder,*/
-              private playerService: PlayerService) {
-
-   /* this.invitationForm = formBuilder.group({
-      'message': ['Game invitation message', Validators.required]
-    });*/
+              private playerService: PlayerService,
+              private authentication: AuthenticationBasicService) {
   }
 
   ngOnInit() {
-   /* this.playerService.getAll() //TODO: Get the list of players once player team upload their changes
+    this.playerService.getAll()
       .subscribe(
-        (players: Player[]) => {
-          this.players = players;
-          this.totalPlayers = players.length; },
-        error => this.errorMessage = <any>error.message);
-*/
+        players => {
+          const user = this.authentication.getCurrentUser();
+          this.players = players.filter(player => {
+            return player.id !== user.id;
+          });
+        });
     this.invitation = new Invitation();
   }
 
@@ -47,12 +45,9 @@ export class InvitationCreateComponent implements OnInit {
   onSubmit(): void {
     this.invitationService.create(this.invitation).subscribe(
       (invitation: Invitation) => this.router.navigate(['/invitations']));
-
-
   }
 
   storeInvitedPlayer(username): void {
     this.invitation.setInvitedPlayer(username);
-    //console.log(username);
-    }
+  }
 }

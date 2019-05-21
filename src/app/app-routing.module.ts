@@ -26,9 +26,11 @@ import { GameCreateComponent } from './game/game-create/game-create.component';
 import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
+import { PlayerRegisterComponent } from './user/user-register/player-register.component';
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
+  { path: 'register', component: PlayerRegisterComponent},
   { path: 'players/:id/edit', component: PlayerEditComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id/delete', component: PlayerDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id', component: PlayerDetailComponent, canActivate: [LoggedInGuard] },
