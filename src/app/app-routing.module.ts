@@ -23,10 +23,12 @@ import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
+import { PlayerRegisterComponent } from './user/user-register/player-register.component';
 
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
+  { path: 'register', component: PlayerRegisterComponent},
   { path: 'players/:id/edit', component: PlayerEditComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id/delete', component: PlayerDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'players/:id', component: PlayerDetailComponent, canActivate: [LoggedInGuard] },

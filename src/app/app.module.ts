@@ -27,6 +27,7 @@ import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { PlayerListComponent } from './user/user-list/player-list.component';
 import { PlayerDetailComponent } from './user/user-detail/player-detail.component';
+import { PlayerRegisterComponent } from './user/user-register/player-register.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
 import { PlayerDeleteComponent } from './user/user-delete/player-delete.component';
 import { AdminDeleteComponent } from './user/user-delete/admin-delete.component';
@@ -58,6 +59,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     PlayerDetailComponent,
     AdminDetailComponent,
     PlayerDeleteComponent,
+    PlayerRegisterComponent,
     AdminDeleteComponent,
     PlayerCreateComponent,
     AdminCreateComponent,
