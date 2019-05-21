@@ -27,6 +27,7 @@ import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { PlayerListComponent } from './user/user-list/player-list.component';
 import { PlayerDetailComponent } from './user/user-detail/player-detail.component';
+import { PlayerRegisterComponent } from './user/user-register/player-register.component';
 import { AdminDetailComponent } from './user/user-detail/admin-detail.component';
 import { PlayerDeleteComponent } from './user/user-delete/player-delete.component';
 import { AdminDeleteComponent } from './user/user-delete/admin-delete.component';
@@ -38,11 +39,15 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { InvitationListComponent } from './invitation/invitation-list/invitation-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CardListComponent } from './card/card-list/card-list.component';
+import { CardDetailComponent } from './card/card-detail/card-detail.component';
+import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { CardSearchComponent } from './card/card-search/card-search.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
+import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,7 @@ import { InvitationEditComponent } from './invitation/invitation-edit/invitation
     PlayerDetailComponent,
     AdminDetailComponent,
     PlayerDeleteComponent,
+    PlayerRegisterComponent,
     AdminDeleteComponent,
     PlayerCreateComponent,
     AdminCreateComponent,
@@ -62,12 +68,16 @@ import { InvitationEditComponent } from './invitation/invitation-edit/invitation
     UserSearchComponent,
     GameListComponent,
     CardListComponent,
+    CardDetailComponent,
+    CardDeleteComponent,
+    CardSearchComponent,
     InvitationListComponent,
     InvitationEditComponent,
     InvitationSearchComponent,
     InvitationCreateComponent,
     InvitationDetailComponent,
     InvitationDeleteComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

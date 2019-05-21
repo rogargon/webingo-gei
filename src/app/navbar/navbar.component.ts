@@ -16,6 +16,10 @@ export class NavbarComponent implements OnInit {
     this.isCollapsed = true;
   }
 
+  isLogged() {
+    return this.authenticationService.isLoggedIn();
+  }
+
   isAdmin(): boolean {
     return this.authenticationService && this.authenticationService.isAdmin();
   }
