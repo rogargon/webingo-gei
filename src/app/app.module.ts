@@ -47,6 +47,12 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
+import { GameService } from "./game/game.service";
+import { GameSearchComponent } from "./game/game-search/game-search.component";
+import { GameCreateComponent } from "./game/game-create/game-create.component";
+import { GameDetailComponent } from "./game/game-detail/game-detail.component";
+import { GameAdminService } from "./game/game-admin.service";
+import { GameEditComponent } from "./game/game-edit/game-edit.component";
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 
 @NgModule({
@@ -66,7 +72,11 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     PlayerEditComponent,
     AdminEditComponent,
     UserSearchComponent,
+    GameCreateComponent,
     GameListComponent,
+    GameDetailComponent,
+    GameSearchComponent,
+    GameEditComponent,
     CardListComponent,
     CardDetailComponent,
     CardDeleteComponent,
@@ -103,7 +113,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService,
-    CardService, InvitationService
+    GameService, GameAdminService, CardService, InvitationService
   ],
   bootstrap: [AppComponent]
 })
