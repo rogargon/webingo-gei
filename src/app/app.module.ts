@@ -42,6 +42,7 @@ import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
 import { CardSearchComponent } from './card/card-search/card-search.component';
+import { CardCreateComponent } from './card/card-create/card-create.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
@@ -81,6 +82,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     CardDetailComponent,
     CardDeleteComponent,
     CardSearchComponent,
+    CardCreateComponent,
     InvitationListComponent,
     InvitationEditComponent,
     InvitationSearchComponent,
