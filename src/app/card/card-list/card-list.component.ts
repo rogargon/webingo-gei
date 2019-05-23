@@ -8,6 +8,8 @@ import {logger} from 'codelyzer/util/logger';
 import { Sort } from 'angular4-hal-aot';
 import {forEach} from '@angular/router/src/utils/collection';
 import {HttpClient} from '@angular/common/http';
+import {Player} from '../../user/player';
+import {Game} from '../../game/game';
 
 @Component({
   selector: 'app-card-list',
@@ -34,6 +36,10 @@ export class CardListComponent implements OnInit {
             this.http.get<Card>(player[0]._links.card.href).subscribe((card) => {
               card.player = player[0];
               this.cards = [card];
+              this.cards[0].getRelation(Game, 'game').subscribe(
+                game => {
+                  this.cards[0].game = game;
+                });
               this.totalCards = this.cards.length;
             });
           });
@@ -47,6 +53,11 @@ export class CardListComponent implements OnInit {
                 .subscribe(player => {
                   this.cards[i].player = player[0];
                   this.beforeSearch[i].player = player[0];
+                });
+
+              this.cards[i].getRelation(Game, 'game').subscribe(
+                game => {
+                  this.cards[i].game = game;
                 });
             }
             this.totalCards = this.cardService.totalElement();

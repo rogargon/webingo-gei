@@ -4,6 +4,7 @@ import { CardService } from '../card.service';
 import { Card } from '../card';
 import Swal from "sweetalert2";
 import {PlayerService} from '../../user/player.service';
+import {Game} from '../../game/game';
 
 @Component({
   selector: 'app-card-detail',
@@ -26,6 +27,10 @@ export class CardDetailComponent implements OnInit {
         this.card = card;
         this.playerService.findByCard(this.card.uri)
           .subscribe(player => this.card.player = player[0]);
+        this.card.getRelation(Game, 'game').subscribe(
+          game => {
+            this.card.game = game;
+          });
       }, error => {
         this.router.navigate(['404']);
       });
