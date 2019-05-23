@@ -20,10 +20,14 @@
         <p class="card-text">{{user.card.numbers[1]}}</p>
         <p class="card-text">{{user.card.numbers[2]}}</p>
       </div>
-      <!--<div class="col-12 p-3" *ngIf="user.played.length">
+      <div class="col-12 p-3" *ngIf="user?.played.length>0">
         <h6 class="card-subtitle text-muted">Played games</h6>
-      <p class="card-text">{{user.played}}</p>
-    </div>-->
+        <div class="card-text" *ngFor="let game of user.played">
+          <p>{{game.id}}</p>
+          <p>{{game.numbers}}</p>
+          <p>{{game.id}}</p>
+      </div>
+    </div>
 
     </div>
     <div class="card-footer text-right">
