@@ -23,7 +23,6 @@ export class LoggedInGuard implements CanActivate {
         type: 'error',
         title: 'You should be logged in to perform this action'
       });
-      // this.errorMessageService.showErrorMessage('You should be logged in to perform this action');
     }
     return this.authentication.isLoggedIn();
   }

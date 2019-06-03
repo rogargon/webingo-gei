@@ -48,14 +48,15 @@ import { InvitationDetailComponent } from './invitation/invitation-detail/invita
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
-import { GameService } from "./game/game.service";
-import { GameSearchComponent } from "./game/game-search/game-search.component";
-import { GameCreateComponent } from "./game/game-create/game-create.component";
-import { GameDetailComponent } from "./game/game-detail/game-detail.component";
-import { GameAdminService } from "./game/game-admin.service";
-import { GameEditComponent } from "./game/game-edit/game-edit.component";
+import { GameService } from './game/game.service';
+import { GameSearchComponent } from './game/game-search/game-search.component';
+import { GameCreateComponent } from './game/game-create/game-create.component';
+import { GameDetailComponent } from './game/game-detail/game-detail.component';
+import { GameAdminService } from './game/game-admin.service';
+import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { HomeComponent } from './home/home.component';
     AngularHalModule.forRoot(),
     LoginBasicModule,
     ErrorHandlerModule,
+    NgbModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

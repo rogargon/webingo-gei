@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
-import {Game} from "../game";
-import {GameAdminService} from "../game-admin.service";
+import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
+import { Game } from '../game';
+import { GameAdminService } from '../game-admin.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-game-detail',
@@ -15,7 +16,8 @@ export class GameDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private gameService: GameAdminService,
               private authenticationService: AuthenticationBasicService,
-              private router: Router) {
+              private router: Router,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -24,6 +26,13 @@ export class GameDetailComponent implements OnInit {
         this.game = game;
       }
     );
+  }
+
+  openModal(content, id) {
+    this.modalService.open(content, {ariaLabelledBy: id}).result.
+    then((result) => {
+    }, (reason) => {
+    });
   }
 
   isAdmin() {
