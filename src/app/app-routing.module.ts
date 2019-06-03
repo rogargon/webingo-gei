@@ -27,6 +27,7 @@ import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 import { PlayerRegisterComponent } from './user/user-register/player-register.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
@@ -53,8 +54,9 @@ const routes: Routes = [
   { path: 'cards/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard]},
   { path: '404', component: NotFoundComponent},
-  { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
