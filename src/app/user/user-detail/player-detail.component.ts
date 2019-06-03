@@ -27,12 +27,12 @@ export class PlayerDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.playerService.get(id).subscribe(
       player => {
-        this.cardService.getBySelfLink(player._links.card.href).toPromise()
-          .then((card: Card) => {
+        console.log(player);
+        this.cardService.getBySelfLink(player._links.card.href).subscribe(
+          card => {
             this.user.card = card;
             this.card = card;
-          })
-          .catch(() => console.log('User doesn\'t have card'));
+          }, () => console.log('User doesn\'t have card'));
         console.log(player._links.played.href);
         this.cardService.getAll(player._links.played.href).toPromise()
           .then((response) => {
