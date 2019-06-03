@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class LoggedInGuard implements CanActivate {
 
-  constructor(private authentication: AuthenticationBasicService,
-              private errorMessageService: ErrorMessageService) {
+  constructor(private authentication: AuthenticationBasicService,) {
   }
 
   canActivate(): boolean {
