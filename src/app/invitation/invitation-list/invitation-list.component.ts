@@ -3,8 +3,7 @@ import { Invitation } from '../invitation';
 import { InvitationService } from '../invitation.service';
 import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
 import { Sort } from 'angular4-hal-aot';
-import {forkJoin} from "rxjs";
-import {User} from "../../login-basic/user";
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -39,9 +38,6 @@ export class InvitationListComponent implements OnInit {
         this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting))
           .subscribe(
             ([invites, createdby]) => {
-              console.log(invites);
-              console.log(createdby);
-
               this.invitations = invites.concat(createdby);
               this.totalInvitations = this.invitationService.totalElement();
             });
@@ -51,6 +47,7 @@ export class InvitationListComponent implements OnInit {
   showSearchResults(invitations) {
     this.invitations = invitations;
   }
+
   isAdmin(): boolean {
     return this.authenticationService && this.authenticationService.isAdmin();
   }
@@ -58,5 +55,12 @@ export class InvitationListComponent implements OnInit {
   changePage() {
     this.invitationService.page(this.page - 1).subscribe(
       (invitations: Invitation[]) => this.invitations = invitations);
+  }
+
+  deleteInvitation(invitation) {
+    this.invitationService.delete(invitation).subscribe( (result) => {
+      this.invitations = this.invitations.filter(obj => obj.id !== invitation.id);
+      this.totalInvitations--;
+    });
   }
 }
