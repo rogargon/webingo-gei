@@ -43,6 +43,7 @@ export class InvitationCreateComponent implements OnInit {
   onSearch(players) {
     this.players = players;
   }
+
   onSubmit(): void {
     this.invitationService.create(this.invitation).subscribe(
       (invitation: Invitation) => this.router.navigate(['/invitations']));

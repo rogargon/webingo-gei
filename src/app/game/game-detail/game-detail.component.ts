@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Invitation } from '../../invitation/invitation';
 import { Player } from '../../user/player';
 import { PlayerService } from '../../user/player.service';
+import { InvitationService } from '../../invitation/invitation.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -24,6 +25,7 @@ export class GameDetailComponent implements OnInit {
               private gameService: GameAdminService,
               private authenticationService: AuthenticationBasicService,
               private router: Router,
+              private invitationService: InvitationService,
               private playerService: PlayerService,
               private authentication: AuthenticationBasicService,
               private modalService: NgbModal) {
@@ -53,6 +55,11 @@ export class GameDetailComponent implements OnInit {
     then((result) => {
     }, (reason) => {
     });
+  }
+
+  onSubmit(): void {
+    this.invitationService.create(this.invitation).subscribe(
+      (invitation: Invitation) => this.modalService.dismissAll());
   }
 
   isAdmin() {
