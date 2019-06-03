@@ -55,5 +55,18 @@ td:hover {
   background-color: #aaa;
 }
 
+#outer {
+  width: 100%;
+  text-align: center;
+}
 
+#inner {
+  display: inline-block;
+}
+
+.active {
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+}
 
