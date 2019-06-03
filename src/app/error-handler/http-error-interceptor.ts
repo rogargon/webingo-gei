@@ -4,11 +4,12 @@ import {ErrorMessageService} from './error-message.service';
 import {Observable} from 'rxjs/internal/Observable';
 import {tap} from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
-  constructor(private errorMessageService: ErrorMessageService) {
+  constructor(private errorMessageService: ErrorMessageService, private router: Router) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -20,24 +21,29 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         (error: any) => {
           if (error instanceof HttpErrorResponse) {
             console.log('HTTP Error Interceptor: ' + this.extractErrorMessage(error));
-            if (error.status === 0) {
-              const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-              });
+            switch (error.status) {
+              case 0:
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
 
-              Toast.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'There was an error connecting to Server!',
-              });
-            } else {
-              if (error.status !== 404) {
+                Toast.fire({
+                  type: 'error',
+                  title: 'Oops...',
+                  text: 'There was an error connecting to Server!',
+                });
+                break;
+              case 401:
+                console.log('Username or password incorrect');
+                break;
+              case 404:
+                break;
+              default:
                 console.log(error);
                 this.errorMessageService.showErrorMessage(this.extractErrorMessage(error));
-              }
             }
           }
         })

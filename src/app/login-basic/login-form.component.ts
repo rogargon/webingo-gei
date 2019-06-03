@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationBasicService} from './authentication-basic.service';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 import {User} from './user';
 import {Router} from '@angular/router';
-import {invalid} from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-login-form',
@@ -25,13 +24,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(loginForm: NgForm): void {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000
+    });
     if (loginForm.invalid) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000
-      });
 
       Toast.fire({
         type: 'error',
@@ -43,19 +42,17 @@ export class LoginFormComponent implements OnInit {
       .subscribe(
         user => {
           this.authenticationService.storeCurrentUser(user);
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2000
-          });
           Toast.fire({
             type: 'success',
             title: 'Signed in successfully'
           });
+          this.router.navigateByUrl('');
+        }, () => {
+          Toast.fire({
+            type: 'error',
+            title: 'Incorrect username or password'
+          });
         });
-    this.router.navigateByUrl('');
-
   }
 
   onCancel(): void {

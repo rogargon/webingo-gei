@@ -1,5 +1,6 @@
-import {Resource} from 'angular4-hal-aot';
-import {Player} from '../user/player';
+import { Resource } from 'angular4-hal-aot';
+import { Player } from '../user/player';
+import { Game } from '../game/game';
 
 export class Invitation extends Resource {
 
@@ -8,7 +9,7 @@ export class Invitation extends Resource {
   message: string;
   invites: Player;
   createdBy: Player;
-  // game: Game;
+  invitesTo: Game;
   createdAt: Date;
 
   invitedPlayer: string;
