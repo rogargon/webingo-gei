@@ -3,6 +3,8 @@ import { Invitation } from '../invitation';
 import { InvitationService } from '../invitation.service';
 import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
 import { Sort } from 'angular4-hal-aot';
+import {forkJoin} from "rxjs";
+import {User} from "../../login-basic/user";
 
 
 @Component({
@@ -32,12 +34,17 @@ export class InvitationListComponent implements OnInit {
             this.totalInvitations = this.invitationService.totalElement();
           });
     } else {
-      this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting)
-        .subscribe(
-          (invitations) => {
-            this.invitations = invitations;
-            this.totalInvitations = this.invitationService.totalElement();
-          });
+      forkJoin(
+        this.invitationService.findByInvites(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting),
+        this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting))
+          .subscribe(
+            ([invites, createdby]) => {
+              console.log(invites);
+              console.log(createdby);
+
+              this.invitations = invites.concat(createdby);
+              this.totalInvitations = this.invitationService.totalElement();
+            });
     }
   }
 
