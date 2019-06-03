@@ -5,13 +5,17 @@ import { AuthenticationBasicService } from '../../login-basic/authentication-bas
 import { Game } from '../game';
 import { GameAdminService } from '../game-admin.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Invitation} from '../../invitation/invitation';
 
 @Component({
   selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html'
+  templateUrl: './game-detail.component.html',
+  styleUrls : ['./game-detail.component.css']
 })
 export class GameDetailComponent implements OnInit {
+
   public game: Game = new Game();
+  public invitation: Invitation;
 
   constructor(private route: ActivatedRoute,
               private gameService: GameAdminService,
@@ -26,6 +30,8 @@ export class GameDetailComponent implements OnInit {
         this.game = game;
       }
     );
+
+    this.invitation = new Invitation();
   }
 
   openModal(content, id) {

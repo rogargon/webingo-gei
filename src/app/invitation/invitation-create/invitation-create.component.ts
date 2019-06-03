@@ -36,6 +36,7 @@ export class InvitationCreateComponent implements OnInit {
             return player.id !== user.id;
           });
         });
+
     this.invitation = new Invitation();
   }
 
