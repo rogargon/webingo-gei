@@ -66,6 +66,7 @@ export class GameDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.invitation.invitesTo = this.game;
     this.invitationService.create(this.invitation).subscribe(
       (invitation: Invitation) => this.modalService.dismissAll());
   }
