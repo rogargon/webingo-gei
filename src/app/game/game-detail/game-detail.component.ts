@@ -9,6 +9,8 @@ import { Invitation } from '../../invitation/invitation';
 import { Player } from '../../user/player';
 import { PlayerService } from '../../user/player.service';
 import { InvitationService } from '../../invitation/invitation.service';
+import {Card} from '../../card/card';
+import {CardService} from '../../card/card.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -21,8 +23,10 @@ export class GameDetailComponent implements OnInit {
   public invitation: Invitation;
   public players: Player[] = [];
 
+  public card: Card;
   constructor(private route: ActivatedRoute,
               private gameService: GameAdminService,
+              private cardService: CardService,
               private authenticationService: AuthenticationBasicService,
               private router: Router,
               private invitationService: InvitationService,
@@ -35,6 +39,10 @@ export class GameDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.get(id).subscribe(game => {
         this.game = game;
+        this.cardService.findByGame(game.uri).subscribe(card => {
+          this.card = card[0];
+        }
+      );
       }
     );
 

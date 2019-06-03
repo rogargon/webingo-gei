@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {GameAdminService} from '../game/game-admin.service';
 import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 import Swal from "sweetalert2";
+import {Card} from '../card/card';
+import {CardService} from '../card/card.service';
 
 @Component({
   selector: 'app-about',
@@ -12,8 +14,9 @@ import Swal from "sweetalert2";
 export class HomeComponent implements OnInit {
   public gamesList: Game[] = [];
   public totalGames = 0;
+  private card: Card;
 
-  constructor(public router: Router, private gameService: GameAdminService) {}
+  constructor(public router: Router, private gameService: GameAdminService, private cardService: CardService) {}
 
   ngOnInit() {
     this.gameService.getAll()
@@ -24,7 +27,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  showLoadingMessage(uri) {
+  showLoadingMessage(game) {
     Swal.fire({
       title: 'Get ready to play!',
       html: 'Loading...',
@@ -33,7 +36,11 @@ export class HomeComponent implements OnInit {
         Swal.showLoading();
       },
     }).then((result) => {
-      this.router.navigate([uri]);
+      this.card = new Card();
+      this.card.game = game.uri;
+      this.cardService.create(this.card).subscribe(
+        (card: Card) => this.router.navigate([game.uri])
+      );
     });
   }
 }
