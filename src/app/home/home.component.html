@@ -15,7 +15,7 @@
       <p class="card-text">{{game.createdAt}}</p>
     </div>
     <div class="col-3 p-1">
-      <button type="button" class="btn m-1 btn-outline-success pull-right"><a [routerLink]="[game.uri]">PLAY</a></button>
+      <button type="button" class="btn m-1 btn-outline-success pull-right" (click)="showLoadingMessage(game.uri)"><a>PLAY</a></button>
     </div>
   </div>
 </div>
