@@ -84,8 +84,4 @@ export class GameDetailComponent implements OnInit {
       'success'
     );
   }
-
-  public changeColor(event) {
-    event.target.classList.add('active');
-  }
 }

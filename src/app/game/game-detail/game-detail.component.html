@@ -101,6 +101,10 @@
 <div id="outer">
   <div id="inner">
     <h5>Your card</h5>
+
+    <app-card-panel [card]="card" [click]="true"></app-card-panel>
+
+    <!--
   <table>
       <tr>
         <td id="square0" (click)="changeColor($event)">{{card.numbers[0][0] != -1 ? card.numbers[0][0] : ''}}</td>
@@ -136,5 +140,6 @@
         <td id="square26" (click)="changeColor($event)">{{card.numbers[2][8] != -1 ? card.numbers[2][8] : ''}}</td>
       </tr>
     </table>
+    -->
   </div>
 </div>

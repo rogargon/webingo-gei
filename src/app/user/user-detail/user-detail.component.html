@@ -14,17 +14,12 @@
         <h6 class="card-subtitle text-muted">Role</h6>
         <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
       </div>
-      <div class="col-12 p-3" *ngIf="!isAdmin() && user.card">
-        <h6 class="card-subtitle text-muted">Card:</h6>
-        <p class="card-text">{{user.card.numbers[0]}}</p>
-        <p class="card-text">{{user.card.numbers[1]}}</p>
-        <p class="card-text">{{user.card.numbers[2]}}</p>
+      <div class="col-12 p-3" *ngIf="!isAdmin() && card">
+        <app-card-panel [card]="card"></app-card-panel>
       </div>
-      <!--<div class="col-12 p-3" *ngIf="user.played.length">
+      <div class="col-12 p-3" *ngIf="played?.length>0">
         <h6 class="card-subtitle text-muted">Played games</h6>
-      <p class="card-text">{{user.played}}</p>
-    </div>-->
-
+      </div>
     </div>
     <div class="card-footer text-right">
       <button id="listBtn" type="button" [routerLink]="['/users']"

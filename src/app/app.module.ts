@@ -57,6 +57,7 @@ import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InvitationDeleteComponent,
     NotFoundComponent,
     HomeComponent,
+    CardPanelComponent,
   ],
   imports: [
     BrowserModule,

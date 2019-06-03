@@ -1,0 +1,6 @@
+<table>
+  <tr *ngFor="let j of [0,1,2]">
+    <td id="square" *ngFor="let i of [0,1,2,3,4,5,6,7,8]"
+        (click)="changeColor($event)">{{card?.numbers[j][i] != -1 ? card?.numbers[j][i] : ''}}</td>
+  </tr>
+</table>

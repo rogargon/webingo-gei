@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 import {CardService} from '../../card/card.service';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 import {Card} from '../../card/card';
-import {Authority} from '../../login-basic/authority';
 
 @Component({
   selector: 'app-player-detail',
@@ -14,6 +13,8 @@ import {Authority} from '../../login-basic/authority';
 })
 export class PlayerDetailComponent implements OnInit {
   public user: Player = new Player();
+  card: Card;
+  played: Card[];
 
   constructor(private route: ActivatedRoute,
               private playerService: PlayerService,
@@ -29,8 +30,16 @@ export class PlayerDetailComponent implements OnInit {
         this.cardService.getBySelfLink(player._links.card.href).toPromise()
           .then((card: Card) => {
             this.user.card = card;
+            this.card = card;
           })
           .catch(() => console.log('User doesn\'t have card'));
+        console.log(player._links.played.href);
+        this.cardService.getAll(player._links.played.href).toPromise()
+          .then((response) => {
+            this.user.played = response;
+            this.played = response;
+          })
+          .catch(() => console.log('User doesn\'t have Played games'));
         this.user = player;
       });
   }
