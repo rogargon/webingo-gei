@@ -16,7 +16,7 @@
       <p class="card-text"><a [routerLink]="['/games', card.game != null ? card.game.id : '']">{{card.game != null ? card.game.id : ' '}}</a></p>
     </div>
     <div class="col-md-4 p-1">
-      <button type="button" class="btn m-1 btn-primary pull-right" [routerLink]="['/cards', card.id]">Details</button>
+      <button type="button" class="btn m-1 btn-primary pull-right" [routerLink]="[card.uri]">Details</button>
     </div>
   </div>
 </div>

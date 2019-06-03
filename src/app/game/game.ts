@@ -9,9 +9,4 @@ export class Game extends Resource {
   status: string;
   jackpot: number;
   createdAt: string;
-
-  constructor(values: object = {}) {
-    super();
-    Object.assign(this as any, values);
-  }
 }

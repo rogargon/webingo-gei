@@ -54,6 +54,7 @@ import { GameDetailComponent } from "./game/game-detail/game-detail.component";
 import { GameAdminService } from "./game/game-admin.service";
 import { GameEditComponent } from "./game/game-edit/game-edit.component";
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
+import { CardPanelComponent } from './card/card-detail/card-panel/card-panel.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     InvitationDetailComponent,
     InvitationDeleteComponent,
     NotFoundComponent,
+    CardPanelComponent,
   ],
   imports: [
     BrowserModule,
