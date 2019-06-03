@@ -1,3 +1,9 @@
+<div class="row justify-content-between">
+  <div class="col mb-3">
+    <button id="newGameBtn" class="btn btn-success pull-right" type="button"><i class="fa fa-user" style="margin-right: 5px"></i>Invite Player</button>
+  </div>
+</div>
+
 <div class="card mb-1">
   <div class="card-block">
     <h4 class="card-header text-left"><u><a [routerLink]="[game.uri]">{{game.name}}</a></u> - Game Details</h4>
@@ -28,7 +34,7 @@
       </div>
     </div>
 
-    <div class="card-footer text-right">
+    <div class="card-footer text-right" *ngIf="isAdmin()">
       <button id="listBtn" type="button" [routerLink]="['/games']"
               class="btn m-1 btn-outline-primary">Back
       </button>
