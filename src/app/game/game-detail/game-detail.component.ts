@@ -5,7 +5,9 @@ import { AuthenticationBasicService } from '../../login-basic/authentication-bas
 import { Game } from '../game';
 import { GameAdminService } from '../game-admin.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {Invitation} from '../../invitation/invitation';
+import { Invitation } from '../../invitation/invitation';
+import { Player } from '../../user/player';
+import { PlayerService } from '../../user/player.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -16,11 +18,14 @@ export class GameDetailComponent implements OnInit {
 
   public game: Game = new Game();
   public invitation: Invitation;
+  public players: Player[] = [];
 
   constructor(private route: ActivatedRoute,
               private gameService: GameAdminService,
               private authenticationService: AuthenticationBasicService,
               private router: Router,
+              private playerService: PlayerService,
+              private authentication: AuthenticationBasicService,
               private modalService: NgbModal) {
   }
 
@@ -30,6 +35,15 @@ export class GameDetailComponent implements OnInit {
         this.game = game;
       }
     );
+
+    this.playerService.getAll()
+      .subscribe(
+        players => {
+          const user = this.authentication.getCurrentUser();
+          this.players = players.filter(player => {
+            return player.id !== user.id;
+          });
+        });
 
     this.invitation = new Invitation();
   }

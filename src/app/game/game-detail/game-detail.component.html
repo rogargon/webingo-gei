@@ -12,7 +12,7 @@
         <label class="control-label">Player*</label>
         <div class="select-style" style="width:200px;">
           <select name="PlayerSelect" [(ngModel)]="invitation.invites">
-            <!--<option *ngFor="let player of players" [ngValue]="player">{{player.username}}</option>-->
+            <option *ngFor="let player of players" [ngValue]="player">{{player.username}}</option>
           </select>
           <div class="invalid-feedback">A player is required</div>
         </div>
@@ -27,7 +27,7 @@
         <!-- Button -->
         <div class="form-group">
           <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!invitationForm.valid">Submit</button>
-          <button id="listBtn" type="button" (click)="modal.dismiss('Cross click')" class="btn m-1 btn-outline-primary pull-right">Back</button>
+          <button type="button" (click)="modal.dismiss('Cross click')" class="btn m-1 btn-outline-primary pull-right">Back</button>
         </div>
 
       </fieldset>
