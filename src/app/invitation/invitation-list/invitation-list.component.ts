@@ -4,6 +4,8 @@ import { InvitationService } from '../invitation.service';
 import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
 import { Sort } from 'angular4-hal-aot';
 import { forkJoin } from 'rxjs';
+import { Game } from '../../game/game';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class InvitationListComponent implements OnInit {
 
   constructor(
     private invitationService: InvitationService,
+    private router: Router,
     private authenticationService: AuthenticationBasicService) {
     }
 
@@ -62,5 +65,13 @@ export class InvitationListComponent implements OnInit {
       this.invitations = this.invitations.filter(obj => obj.id !== invitation.id);
       this.totalInvitations--;
     });
+  }
+
+  acceptInvitation(invitation) {
+    invitation.getRelation(Game, 'invitesTo').subscribe(
+      invitesTo => {
+        this.deleteInvitation(invitation);
+        this.router.navigate(['/games/' + invitesTo.id]);
+      });
   }
 }

@@ -2,10 +2,6 @@
   <div class="col mb-3">
     <app-invitation-search (emitResults)="showSearchResults($event)" [invitations]="invitations"></app-invitation-search>
   </div>
-  <div *ngIf="!isAdmin()" class="col mb-3">
-    <button id="newInvitationBtn" class="btn btn-success pull-right" type="button"
-            [routerLink]="['/invitations/new']">Create Invitation</button>
-  </div>
 </div>
 
 
@@ -23,7 +19,7 @@
   </div>
 
   <div class="card-footer text-right">
-    <button type="button" class="btn m-1 btn-outline-success" [routerLink]="['/invitations', invitation.id]">Accept</button>
+    <button type="button" class="btn m-1 btn-outline-success"(click)="acceptInvitation(invitation)">Accept</button>
     <button type="button" class="btn m-1 btn-outline-danger" (click)="deleteInvitation(invitation)">Decline</button>
     <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="['/invitations', invitation.id]">Details</button>
   </div>
