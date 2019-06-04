@@ -15,6 +15,7 @@
         <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
       </div>
       <div class="col-12 p-3" *ngIf="!isAdmin() && card">
+        <h6 class="card-subtitle text-muted">Assigned Card</h6>
         <app-card-panel [card]="card"></app-card-panel>
       </div>
       <div class="col-12 p-3" *ngIf="played?.length>0">

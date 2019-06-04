@@ -32,7 +32,20 @@ export class PlayerDetailComponent implements OnInit {
           card => {
             this.user.card = card;
             this.card = card;
-          }, () => console.log('User doesn\'t have card'));
+          }, () => {
+            console.log('User doesn\'t have assigned card');
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            Toast.fire({
+              type: 'info',
+              title: 'The user doesn\'t have assigned card'
+            });
+          }
+          );
         console.log(player._links.played.href);
         this.cardService.getAll(player._links.played.href).toPromise()
           .then((response) => {
