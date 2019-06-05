@@ -33,8 +33,13 @@
       <button id="editBtn" type="button" [routerLink]="['edit']"
               class="btn m-1 btn-outline-success">Edit
       </button>
-      <!--[routerLink]="['delete']"-->
-      <button id="deleteBtn" type="button" *ngIf="isAdmin()" [swal]="deleteSwal"
+      <!-- An admin should delete anyone -->
+      <button id="deleteBtn" type="button" *ngIf="this.authenticationService.getCurrentUser().getAuthorities().includes('ROLE_ADMIN')"  [swal]="deleteSwal"
+              class="btn m-1 btn-outline-danger">Delete
+      </button>
+
+      <!-- A user should delete himself/herself/itself -->
+      <button id="deleteBtnPlayer" type="button" *ngIf="this.authenticationService.getCurrentUser().uri == [user.uri]"  [swal]="deleteSwal"
               class="btn m-1 btn-outline-danger">Delete
       </button>
 
