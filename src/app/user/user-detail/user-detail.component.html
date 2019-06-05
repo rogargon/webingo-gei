@@ -34,14 +34,11 @@
               class="btn m-1 btn-outline-success">Edit
       </button>
       <!-- An admin should delete anyone -->
-      <button id="deleteBtn" type="button" *ngIf="this.authenticationService.getCurrentUser().getAuthorities().includes('ROLE_ADMIN')"  [swal]="deleteSwal"
+      <button id="deleteBtn" type="button" *ngIf="this.authenticationService.getCurrentUser().getAuthorities().includes('ROLE_ADMIN') || this.authenticationService.getCurrentUser().uri == [user.uri] "  [swal]="deleteSwal"
               class="btn m-1 btn-outline-danger">Delete
       </button>
 
-      <!-- A user should delete himself/herself/itself -->
-      <button id="deleteBtnPlayer" type="button" *ngIf="this.authenticationService.getCurrentUser().uri == [user.uri]"  [swal]="deleteSwal"
-              class="btn m-1 btn-outline-danger">Delete
-      </button>
+
 
       <swal
         #deleteSwal
