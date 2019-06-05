@@ -1,5 +1,5 @@
-import { Authority } from './authority';
-import { Resource } from 'angular4-hal-aot';
+import {Authority} from './authority';
+import {Resource} from 'angular4-hal-aot';
 
 export class User extends Resource {
   id: string;
@@ -9,9 +9,18 @@ export class User extends Resource {
   authorities: Authority[] = [];
   authorization = '';
   password = '';
+  enabled: boolean;
 
   constructor(values: object = {}) {
     super();
     Object.assign(this as any, values);
+  }
+
+  getAuthorities(): string[] {
+    const au: string[] = [];
+    for (const auth of this.authorities) {
+      au.push(auth.authority);
+    }
+    return au;
   }
 }

@@ -1,3 +1,36 @@
-<p>
-  invitation-list works!
-</p>
+<div class="row justify-content-between">
+  <div class="col mb-3">
+    <app-invitation-search (emitResults)="showSearchResults($event)" [invitations]="invitations"></app-invitation-search>
+  </div>
+  <div *ngIf="!isAdmin()" class="col mb-3">
+    <button id="newInvitationBtn" class="btn btn-success pull-right" type="button"
+            [routerLink]="['/invitations/new']">Create Invitation</button>
+  </div>
+</div>
+
+
+<div class="card mb-1" *ngFor="let invitation of invitations">
+  <div class="card-block row m-1">
+    <h4 class="card-title col-md-12 p-1"><a [routerLink]="['/invitations', invitation.id]">{{invitation.id}}</a></h4>
+    <div class="col-md-4 p-1">
+      <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Created At</h6>
+      <p class="card-text">{{invitation.createdAt}}</p>
+    </div>
+    <div class="col-md-4 p-1">
+     <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Message</h6>
+    <p class="card-text">{{invitation.message}}</p>
+  </div>
+    <div class="col-md-4 p-1">
+      <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="['/invitations', invitation.id]">Details</button>
+    </div>
+  </div>
+</div>
+
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalInvitations"
+                (pageChange)="changePage()"></ngb-pagination>
+
+<p i18n class="text-center">Showing {{invitations.length}} out of { totalInvitations, plural,
+  =1 {1 admin}
+  other { {{totalInvitations}} invitations} }</p>

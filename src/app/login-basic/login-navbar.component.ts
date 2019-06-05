@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationBasicService} from './authentication-basic.service';
 import {User} from './user';
-import {Router} from "@angular/router";
-import Swal from 'sweetalert2'
+import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-navbar,[app-login-navbar]',
@@ -19,7 +19,7 @@ export class LoginNavbarComponent implements OnInit {
 
   logout(): void {
     this.authenticationService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -29,7 +29,7 @@ export class LoginNavbarComponent implements OnInit {
     Toast.fire({
       type: 'info',
       title: 'Signed out successfully'
-    })
+    });
   }
 
   getCurrentUserName(): string {
@@ -43,10 +43,12 @@ export class LoginNavbarComponent implements OnInit {
   getUser(): User {
     return this.authenticationService.getCurrentUser();
   }
-  isAdmin():boolean{
+
+  isAdmin(): boolean {
     return this.authenticationService.isAdmin();
   }
-  getCurrentUserId(): String{
+
+  getCurrentUserId(): string {
     return this.authenticationService.getCurrentUser().id;
   }
 

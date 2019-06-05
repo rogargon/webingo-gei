@@ -3,15 +3,14 @@ import { Router } from '@angular/router';
 import { User } from '../../login-basic/user';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
-import {Authority} from "../../login-basic/authority";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-player-register',
-  templateUrl: '../user-form/user-register-form.component.html'
+  templateUrl: './player-register-form.html'
 })
 export class PlayerRegisterComponent implements OnInit {
   public user: Player;
-
 
   constructor(private router: Router,
               private playerService: PlayerService) {
@@ -19,13 +18,24 @@ export class PlayerRegisterComponent implements OnInit {
 
   ngOnInit() {
     this.user = new Player();
+
   }
 
-  onSubmit() {
+  onSubmit(): void {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    Toast.fire({
+      type: 'success',
+      title: 'User registered successfully'
+    });
 
-
-    console.log(this.user.authorities);
     this.playerService.create(this.user).subscribe(
-      (player: Player) => this.router.navigate([player.uri]));
+      // (player: Player) => this.router.navigate([player.uri])
+    );
+    this.router.navigateByUrl('/login');
   }
 }

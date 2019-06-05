@@ -1,3 +1,30 @@
-<p>
-  game-list works!
-</p>
+<div class="row justify-content-between">
+  <div class="col mb-3">
+    <app-game-search (emitResults)="showSearchResults($event)" [gamesList]="gamesList"></app-game-search>
+  </div>
+  <div class="col mb-3">
+    <button id="newGameBtn" class="btn btn-success pull-right" type="button"
+            [routerLink]="['/games/new']">Create Game</button>
+  </div>
+</div>
+
+<div class="card mb-1" *ngFor="let game of gamesList">
+  <div class="card-block row m-1">
+    <h4 class="card-header col-md-12 p-1">
+      <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
+    <div class="col-4 p-1 mt-1">
+      <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Name</h6>
+      <p class="card-text">{{game.name}}</p>
+    </div>
+    <div class="col-4 p-1 mt-1">
+      <h6 class="card-subtitle text-muted">Price per Card</h6>
+      <p class="card-text">{{game.pricePerCard}}</p>
+    </div>
+    <div class="col-4 p-1">
+      <button type="button" class="btn m-1 btn-outline-success pull-right" *ngIf="isAdmin()">Edit</button>
+      <button type="button" class="btn m-1 btn-outline-primary pull-right"><a [routerLink]="[game.uri]">Details</a></button>
+    </div>
+  </div>
+</div>
+
+<p i18n class="text-center">Showing {{gamesList.length}} out of {{totalGames}} games</p>
