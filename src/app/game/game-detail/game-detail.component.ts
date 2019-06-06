@@ -9,8 +9,10 @@ import { Invitation } from '../../invitation/invitation';
 import { Player } from '../../user/player';
 import { PlayerService } from '../../user/player.service';
 import { InvitationService } from '../../invitation/invitation.service';
-import {Card} from '../../card/card';
-import {CardService} from '../../card/card.service';
+import { Card } from '../../card/card';
+import { CardService } from '../../card/card.service';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: 'app-game-detail',
@@ -22,8 +24,9 @@ export class GameDetailComponent implements OnInit {
   public game: Game = new Game();
   public invitation: Invitation;
   public players: Player[] = [];
-
+  private stompClient;
   public card: Card;
+
   constructor(private route: ActivatedRoute,
               private gameService: GameAdminService,
               private cardService: CardService,
@@ -36,6 +39,8 @@ export class GameDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initSocket();
+
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.get(id).subscribe(game => {
         this.game = game;
@@ -83,5 +88,33 @@ export class GameDetailComponent implements OnInit {
       'The game "' + this.game.name + '" has been deleted',
       'success'
     );
+  }
+
+  private initSocket() {
+    const ws = new SockJS('http://localhost:8080/ws');
+    this.stompClient = Stomp.over(ws);
+
+    const that = this;
+    this.stompClient.connect({}, () => {
+      const chatMessage = {
+        sender: 'sender',
+        content: 'content',
+        type: 'CHAT'
+      };
+      this.stompClient.send('/app/chat.sendMessage' , {}, JSON.stringify(chatMessage));
+      that.stompClient.subscribe('/topic/public', (message) => {
+        that.onMessageReceived(message);
+        console.log(message);
+      });
+    });
+  }
+
+  private onMessageReceived(payload) {
+    const message = JSON.parse(payload.body);
+    console.log('MESSAGE:', message);
+  }
+
+  private onError(error) {
+    console.log('ERROR: ', error);
   }
 }

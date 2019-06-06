@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Game} from "../game";
-import {Router} from "@angular/router";
-import {GameService} from "../game.service";
-import {GameAdminService} from "../game-admin.service";
-import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import Swal from "sweetalert2";
+import {Game} from '../game';
+import {Router} from '@angular/router';
+import {GameAdminService} from '../game-admin.service';
+import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-game-list',
