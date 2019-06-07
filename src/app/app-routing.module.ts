@@ -26,6 +26,7 @@ import { GameListComponent } from './game/game-list/game-list.component';
 import { GameCreateComponent } from './game/game-create/game-create.component';
 import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { GameEditComponent } from './game/game-edit/game-edit.component';
+import { GameManageComponent } from './game/game-manage/game-manage.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 import { PlayerRegisterComponent } from './user/user-register/player-register.component';
 import {HomeComponent} from './home/home.component';
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'games', component: GameListComponent, canActivate: [AdministratorGuard] },
   { path: 'games/new', component: GameCreateComponent, canActivate: [AdministratorGuard] },
   { path: 'games/:id', component: GameDetailComponent, canActivate: [LoggedInGuard] },
+  { path: 'games/:id/manage', component: GameManageComponent, canActivate: [AdministratorGuard] },
   { path: 'games/:id/edit', component: GameEditComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/new', component: CardCreateComponent, canActivate: [LoggedInGuard] },

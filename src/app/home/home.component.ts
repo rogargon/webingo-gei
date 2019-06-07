@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   public totalGames = 0;
   private card: Card;
 
-  constructor(public router: Router, private gameService: GameAdminService, private cardService: CardService) {}
+  constructor(public router: Router,
+              private gameService: GameAdminService,
+              private cardService: CardService,
+              private authenticationService: AuthenticationBasicService,
+  ) {}
 
   ngOnInit() {
     this.gameService.getAll()
@@ -42,5 +46,13 @@ export class HomeComponent implements OnInit {
         (card: Card) => this.router.navigate([game.uri])
       );
     });
+  }
+
+  manageGame(game){
+    this.router.navigate([game.uri+'/manage']);
+  }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
   }
 }

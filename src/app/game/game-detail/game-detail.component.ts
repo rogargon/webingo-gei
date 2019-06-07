@@ -41,7 +41,7 @@ export class GameDetailComponent implements OnInit {
   ngOnInit() {
     this.initSocket();
 
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); //pille id
     this.gameService.get(id).subscribe(game => {
         this.game = game;
         this.cardService.findByGame(game.uri).subscribe(card => {

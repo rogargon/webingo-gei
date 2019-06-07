@@ -15,7 +15,8 @@
       <p class="card-text">{{game.createdAt}}</p>
     </div>
     <div class="col-3 p-1">
-      <button type="button" class="btn m-1 btn-success pull-right" (click)="showLoadingMessage(game)"><i class="fa fa-play" style="margin-right: 5px"></i><a>PLAY</a></button>
+      <button type="button" class="btn m-1 btn-success pull-right" (click)="showLoadingMessage(game)" *ngIf="!isAdmin()"><i class="fa fa-play" style="margin-right: 5px"></i><a>PLAY</a></button>
+      <button type="button" class="btn m-1 btn-success pull-right" (click)="manageGame(game)" *ngIf="isAdmin()"><i class="fa fa-play" style="margin-right: 5px"></i><a>Manage</a></button>
     </div>
   </div>
 </div>

@@ -58,6 +58,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.component';
+import {GameManageComponent} from "./game/game-manage/game-manage.component";
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.compo
     NotFoundComponent,
     HomeComponent,
     CardPanelComponent,
+    GameManageComponent,
   ],
   imports: [
     BrowserModule,
