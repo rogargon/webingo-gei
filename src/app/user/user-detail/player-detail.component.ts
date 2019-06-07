@@ -43,11 +43,12 @@ export class PlayerDetailComponent implements OnInit {
 
   public delete() {
     this.playerService.delete(this.user).subscribe(
-      () => this.router.navigate(['users']));
+      () => this.router.navigateByUrl('/'));
     Swal.fire(
       'Deleted!',
       'The user ' + this.user.username + ' has been deleted',
       'success'
     );
+
   }
 }
