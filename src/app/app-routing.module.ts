@@ -21,12 +21,14 @@ import { InvitationDeleteComponent } from './invitation/invitation-delete/invita
 import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
+import { CardCreateComponent } from './card/card-create/card-create.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { GameCreateComponent } from './game/game-create/game-create.component';
 import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
 import { PlayerRegisterComponent } from './user/user-register/player-register.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   { path: 'players/new', component: PlayerCreateComponent, canActivate: [AdministratorGuard] },
@@ -50,11 +52,13 @@ const routes: Routes = [
   { path: 'games/:id', component: GameDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'games/:id/edit', component: GameEditComponent, canActivate: [AdministratorGuard] },
   { path: 'cards', component: CardListComponent, canActivate: [LoggedInGuard] },
+  { path: 'cards/new', component: CardCreateComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/:id', component: CardDetailComponent, canActivate: [LoggedInGuard] },
   { path: 'cards/:id/delete', component: CardDeleteComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard]},
   { path: '404', component: NotFoundComponent},
-  { path: '', redirectTo: 'about', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

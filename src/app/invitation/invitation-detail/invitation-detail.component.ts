@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InvitationService } from '../invitation.service';
 import { Invitation } from '../invitation';
 import { Player } from '../../user/player';
+import { Game } from '../../game/game';
 
 @Component({
   selector: 'app-invitation-detail',
@@ -10,9 +11,11 @@ import { Player } from '../../user/player';
   styleUrls: ['./invitation-detail.component.css']
 })
 export class InvitationDetailComponent implements OnInit {
+
   public invitation: Invitation = new Invitation();
   createdBy: Player = new Player();
   invites: Player = new Player();
+  invitesTo: Game = new Game();
 
   constructor(private route: ActivatedRoute,
               private invitationService: InvitationService,
@@ -32,6 +35,11 @@ export class InvitationDetailComponent implements OnInit {
         invitation.getRelation(Player, 'invites').subscribe(
           invites => {
             this.invites = invites;
+          });
+
+        invitation.getRelation(Game, 'invitesTo').subscribe(
+          invitesTo => {
+            this.invitesTo = invitesTo;
           });
       });
   }

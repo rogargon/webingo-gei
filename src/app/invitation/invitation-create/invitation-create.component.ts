@@ -36,12 +36,14 @@ export class InvitationCreateComponent implements OnInit {
             return player.id !== user.id;
           });
         });
+
     this.invitation = new Invitation();
   }
 
   onSearch(players) {
     this.players = players;
   }
+
   onSubmit(): void {
     this.invitationService.create(this.invitation).subscribe(
       (invitation: Invitation) => this.router.navigate(['/invitations']));

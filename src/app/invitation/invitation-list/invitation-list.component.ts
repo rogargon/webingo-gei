@@ -3,6 +3,9 @@ import { Invitation } from '../invitation';
 import { InvitationService } from '../invitation.service';
 import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
 import { Sort } from 'angular4-hal-aot';
+import { forkJoin } from 'rxjs';
+import { Game } from '../../game/game';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +23,7 @@ export class InvitationListComponent implements OnInit {
 
   constructor(
     private invitationService: InvitationService,
+    private router: Router,
     private authenticationService: AuthenticationBasicService) {
     }
 
@@ -32,18 +36,21 @@ export class InvitationListComponent implements OnInit {
             this.totalInvitations = this.invitationService.totalElement();
           });
     } else {
-      this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting)
-        .subscribe(
-          (invitations) => {
-            this.invitations = invitations;
-            this.totalInvitations = this.invitationService.totalElement();
-          });
+      forkJoin(
+        this.invitationService.findByInvites(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting),
+        this.invitationService.findByCreatedBy(this.authenticationService.getCurrentUser(), this.pageSize, this.sorting))
+          .subscribe(
+            ([invites, createdby]) => {
+              this.invitations = invites.concat(createdby);
+              this.totalInvitations = this.invitationService.totalElement();
+            });
     }
   }
 
   showSearchResults(invitations) {
     this.invitations = invitations;
   }
+
   isAdmin(): boolean {
     return this.authenticationService && this.authenticationService.isAdmin();
   }
@@ -51,5 +58,20 @@ export class InvitationListComponent implements OnInit {
   changePage() {
     this.invitationService.page(this.page - 1).subscribe(
       (invitations: Invitation[]) => this.invitations = invitations);
+  }
+
+  deleteInvitation(invitation) {
+    this.invitationService.delete(invitation).subscribe( (result) => {
+      this.invitations = this.invitations.filter(obj => obj.id !== invitation.id);
+      this.totalInvitations--;
+    });
+  }
+
+  acceptInvitation(invitation) {
+    invitation.getRelation(Game, 'invitesTo').subscribe(
+      invitesTo => {
+        this.deleteInvitation(invitation);
+        this.router.navigate(['/games/' + invitesTo.id]);
+      });
   }
 }

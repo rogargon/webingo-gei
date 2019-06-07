@@ -42,18 +42,22 @@ import { CardListComponent } from './card/card-list/card-list.component';
 import { CardDetailComponent } from './card/card-detail/card-detail.component';
 import { CardDeleteComponent } from './card/card-delete/card-delete.component';
 import { CardSearchComponent } from './card/card-search/card-search.component';
+import { CardCreateComponent } from './card/card-create/card-create.component';
 import { InvitationCreateComponent } from './invitation/invitation-create/invitation-create.component';
 import { InvitationDetailComponent } from './invitation/invitation-detail/invitation-detail.component';
 import { InvitationDeleteComponent } from './invitation/invitation-delete/invitation-delete.component';
 import { InvitationSearchComponent } from './invitation/invitation-search/invitation-search.component';
 import { InvitationEditComponent } from './invitation/invitation-edit/invitation-edit.component';
-import { GameService } from "./game/game.service";
-import { GameSearchComponent } from "./game/game-search/game-search.component";
-import { GameCreateComponent } from "./game/game-create/game-create.component";
-import { GameDetailComponent } from "./game/game-detail/game-detail.component";
-import { GameAdminService } from "./game/game-admin.service";
-import { GameEditComponent } from "./game/game-edit/game-edit.component";
+import { GameService } from './game/game.service';
+import { GameSearchComponent } from './game/game-search/game-search.component';
+import { GameCreateComponent } from './game/game-create/game-create.component';
+import { GameDetailComponent } from './game/game-detail/game-detail.component';
+import { GameAdminService } from './game/game-admin.service';
+import { GameEditComponent } from './game/game-edit/game-edit.component';
 import { NotFoundComponent } from './error-handler/error-alert/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +85,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     CardDetailComponent,
     CardDeleteComponent,
     CardSearchComponent,
+    CardCreateComponent,
     InvitationListComponent,
     InvitationEditComponent,
     InvitationSearchComponent,
@@ -88,6 +93,8 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     InvitationDetailComponent,
     InvitationDeleteComponent,
     NotFoundComponent,
+    HomeComponent,
+    CardPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +107,7 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
     AngularHalModule.forRoot(),
     LoginBasicModule,
     ErrorHandlerModule,
+    NgbModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

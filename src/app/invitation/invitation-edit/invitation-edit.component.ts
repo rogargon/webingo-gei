@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Invitation} from '../invitation';
-import {InvitationService} from '../invitation.service';
-import {PlayerService} from "../../user/player.service";
-import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import {Player} from "../../user/player";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Invitation } from '../invitation';
+import { InvitationService } from '../invitation.service';
+import { PlayerService } from '../../user/player.service';
+import { AuthenticationBasicService } from '../../login-basic/authentication-basic.service';
+import { Player} from '../../user/player';
 
 @Component({
   selector: 'app-invitation-edit',
@@ -39,7 +39,6 @@ export class InvitationEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // this.invitation.authorities = []; // This field is not editable
     this.invitationService.update(this.invitation)
       .subscribe(
         (invitation: Invitation) => this.router.navigate(['/invitations']));

@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class LoggedInGuard implements CanActivate {
 
-  constructor(private authentication: AuthenticationBasicService,
-              private errorMessageService: ErrorMessageService) {
+  constructor(private authentication: AuthenticationBasicService,) {
   }
 
   canActivate(): boolean {
@@ -23,7 +22,6 @@ export class LoggedInGuard implements CanActivate {
         type: 'error',
         title: 'You should be logged in to perform this action'
       });
-      // this.errorMessageService.showErrorMessage('You should be logged in to perform this action');
     }
     return this.authentication.isLoggedIn();
   }
