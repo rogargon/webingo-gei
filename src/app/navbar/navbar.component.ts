@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import { FormControl } from '@angular/forms';
+import {ThemeService} from "../theme.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +10,16 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
 })
 export class NavbarComponent implements OnInit {
   public isCollapsed: boolean;
+  darkTheme =  new FormControl(false);
 
-  constructor(private authenticationService: AuthenticationBasicService) {
+  constructor(private authenticationService: AuthenticationBasicService, private themeService: ThemeService) {
+    this.darkTheme.valueChanges.subscribe(value => {
+      if (value) {
+        this.themeService.toggleDark();
+      } else {
+        this.themeService.toggleLight();
+      }
+    });
   }
 
   ngOnInit() {

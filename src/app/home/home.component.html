@@ -1,4 +1,4 @@
-<h3>Loading Games</h3>
+<h3 *ngIf="gamesList.length != 0">Loading Games</h3>
 <div class="card mb-1" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
     <h4 class="card-header col-md-12 p-1">

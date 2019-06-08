@@ -40,24 +40,6 @@
       <button id="listBtn" type="button" [routerLink]="['']"
               class="btn m-1 btn-outline-primary">Back
       </button>
-      <button id="editBtn" type="button" [routerLink]="['edit']"
-              class="btn m-1 btn-outline-success" *ngIf="isAdmin()">Edit
-      </button>
-      <!--[routerLink]="['delete']"-->
-      <button id="deleteBtn" type="button" *ngIf="isAdmin()" [swal]="deleteSwal"
-              class="btn m-1 btn-outline-danger">Delete
-      </button>
-
-      <swal
-        #deleteSwal
-        title="Are you sure?"
-        text="You won't be able to revert the deletion!"
-        type="warning"
-        [customClass]="{confirmButton:'btn btn-success', cancelButton:'btn btn-danger'}"
-        [showCancelButton]="true"
-        [options]="{confirmButtonClass:'m-1',cancelButtonClass:'m-1'}"
-        (confirm)="delete()">
-      </swal>
     </div>
   </div>
 </div>

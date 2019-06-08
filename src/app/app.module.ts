@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbCollapseModule, NgbDropdownModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularHalModule } from 'angular4-hal-aot';
 import { ExternalConfigurationService } from './external-configuration-service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -59,6 +59,7 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.component';
 import {GameManageComponent} from "./game/game-manage/game-manage.component";
+import {ThemeService} from "./theme.service";
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import {GameManageComponent} from "./game/game-manage/game-manage.component";
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -123,7 +125,7 @@ import {GameManageComponent} from "./game/game-manage/game-manage.component";
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService,
-    GameService, GameAdminService, CardService, InvitationService
+    GameService, GameAdminService, CardService, InvitationService, ThemeService
   ],
   bootstrap: [AppComponent]
 })

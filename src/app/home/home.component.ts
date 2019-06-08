@@ -13,7 +13,6 @@ import {CardService} from '../card/card.service';
 })
 export class HomeComponent implements OnInit {
   public gamesList: Game[] = [];
-  public gamesPlaying: Game[] = [];
   public gamesFinished: Game[] = [];
   public totalGames = 0;
   private card: Card;
