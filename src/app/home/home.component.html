@@ -1,4 +1,12 @@
-<div class="card mb-1" *ngFor="let game of gamesList">
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'loading')">Loading</button>
+  <button class="tablinks" onclick="openTab(event, 'playing')" *ngIf="isAdmin()">Playing</button>
+  <button class="tablinks" onclick="openTab(event, 'finished')">Finished</button>
+</div>
+
+
+<div class="card mb-1" id="loading" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
     <h4 class="card-header col-md-12 p-1">
       <a [routerLink]="[game.uri]">{{game.name}}</a><span style="font-size: medium; font-style: oblique;" *ngIf="isAdmin()">- {{game.status}}</span></h4>
@@ -19,4 +27,12 @@
       <button type="button" class="btn m-1 btn-success pull-right" (click)="manageGame(game)" *ngIf="isAdmin()"><i class="fa fa-play" style="margin-right: 5px"></i><a>Manage</a></button>
     </div>
   </div>
+</div>
+
+<div class="card mb-1" id="playing" *ngFor="let game of gamesPlaying">
+  <h1>tab play</h1>
+</div>
+
+<div class="card mb-1" id="finished" *ngFor="let game of gamesFinished">
+  <h1>tab fini</h1>
 </div>

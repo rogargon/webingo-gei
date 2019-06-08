@@ -13,6 +13,8 @@ import {CardService} from '../card/card.service';
 })
 export class HomeComponent implements OnInit {
   public gamesList: Game[] = [];
+  public gamesPlaying: Game[] = [];
+  public gamesFinished: Game[] = [];
   public totalGames = 0;
   private card: Card;
 
@@ -27,6 +29,8 @@ export class HomeComponent implements OnInit {
       .subscribe((gamesList) => {
           gamesList.forEach(g => console.log(g.status));
           this.gamesList = gamesList.filter( g => g.status === 'LOADING');
+          this.gamesPlaying = gamesList.filter( g => g.status === 'PLAYING');
+          this.gamesFinished = gamesList.filter( g => g.status === 'FINISHED');
           this.totalGames = this.gamesList.length;
       });
   }
