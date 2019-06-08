@@ -1,15 +1,8 @@
-
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'loading')">Loading</button>
-  <button class="tablinks" onclick="openTab(event, 'playing')" *ngIf="isAdmin()">Playing</button>
-  <button class="tablinks" onclick="openTab(event, 'finished')">Finished</button>
-</div>
-
-
-<div class="card mb-1" id="loading" *ngFor="let game of gamesList">
+<h3>Loading Games</h3>
+<div class="card mb-1" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
     <h4 class="card-header col-md-12 p-1">
-      <a [routerLink]="[game.uri]">{{game.name}}</a><span style="font-size: medium; font-style: oblique;" *ngIf="isAdmin()">- {{game.status}}</span></h4>
+      <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
     <div class="col-3 p-1 mt-1">
       <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Price:</h6>
       <p class="card-text">{{game.pricePerCard}}</p>
@@ -29,10 +22,3 @@
   </div>
 </div>
 
-<div class="card mb-1" id="playing" *ngFor="let game of gamesPlaying">
-  <h1>tab play</h1>
-</div>
-
-<div class="card mb-1" id="finished" *ngFor="let game of gamesFinished">
-  <h1>tab fini</h1>
-</div>

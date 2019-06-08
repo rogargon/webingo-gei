@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
       .subscribe((gamesList) => {
           gamesList.forEach(g => console.log(g.status));
           this.gamesList = gamesList.filter( g => g.status === 'LOADING');
-          this.gamesPlaying = gamesList.filter( g => g.status === 'PLAYING');
           this.gamesFinished = gamesList.filter( g => g.status === 'FINISHED');
           this.totalGames = this.gamesList.length;
       });
