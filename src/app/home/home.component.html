@@ -1,7 +1,7 @@
 <div class="card mb-1" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
     <h4 class="card-header col-md-12 p-1">
-      <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
+      <a [routerLink]="[game.uri]">{{game.name}}</a><span style="font-size: medium; font-style: oblique;" *ngIf="isAdmin()">- {{game.status}}</span></h4>
     <div class="col-3 p-1 mt-1">
       <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Price:</h6>
       <p class="card-text">{{game.pricePerCard}}</p>
