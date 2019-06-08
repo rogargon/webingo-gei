@@ -21,7 +21,7 @@
       <p class="card-text">{{game.pricePerCard}}</p>
     </div>
     <div class="col-4 p-1">
-      <button type="button" class="btn m-1 btn-outline-success pull-right" *ngIf="isAdmin()">Edit</button>
+      <button type="button" class="btn m-1 btn-outline-success pull-right" *ngIf="isAdmin()"><a [routerLink]="[game.uri+'/edit']">Edit</a></button>
       <button type="button" class="btn m-1 btn-outline-primary pull-right"><a [routerLink]="[game.uri]">Details</a></button>
     </div>
   </div>
