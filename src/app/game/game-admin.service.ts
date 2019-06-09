@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 import {Game} from "./game";
+import {RestService} from "angular4-hal-aot";
 
 @Injectable()
-export class GameAdminService {
+export class GameAdminService extends RestService<Game>{
 
-  constructor(private http: HttpClient) {
+  constructor(injector: Injector, private http: HttpClient) {
+    super(Game, 'Games', injector);
   }
 
   private getHttpOptions() {

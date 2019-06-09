@@ -1,4 +1,3 @@
-<html>
 <div class="row justify-content-between">
   <div class="col mb-3">
     <app-game-search (emitResults)="showSearchResults($event)" [gamesList]="gamesList"></app-game-search>
@@ -44,7 +43,7 @@
         <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
       <div class="col-4 p-1 mt-1">
         <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Name</h6>
-        <p class="card-text">{{game.name}}</p>
+        <label class="card-text">{{game.name}}</label>
       </div>
       <div class="col-4 p-1 mt-1">
         <h6 class="card-subtitle text-muted">Price per Card</h6>
@@ -78,6 +77,9 @@
     </div>
   </div>
 </div>
+<br>
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]=""
+                (pageChange)="changePage()"></ngb-pagination>
 
-<p i18n class="text-center">Showing {{gamesList.length}} out of {{totalGames}} games</p>
-</html>
+<p class="showing" i18n class="text-center">Showing {{gamesList.length}} out of {{totalGames}} games</p>

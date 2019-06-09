@@ -3,6 +3,7 @@ import {Game} from '../game';
 import {Router} from '@angular/router';
 import {GameAdminService} from '../game-admin.service';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Invitation} from "../../invitation/invitation";
 
 @Component({
   selector: 'app-game-list',
@@ -14,6 +15,8 @@ export class GameListComponent implements OnInit {
   public gamesPlaying: Game[] = [];
   public gamesFinished: Game[] = [];
   public totalGames = 0;
+  public page = 1;
+  public pageSize = 10;
 
   constructor(public router: Router,
               private gameService: GameAdminService,
@@ -51,5 +54,9 @@ export class GameListComponent implements OnInit {
     }
     document.getElementById(status).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+
+  changePage() {
+    this.gameService.page(this.page - 1).subscribe();
   }
 }
