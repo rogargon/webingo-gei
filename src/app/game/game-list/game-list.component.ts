@@ -3,7 +3,6 @@ import {Game} from '../game';
 import {Router} from '@angular/router';
 import {GameAdminService} from '../game-admin.service';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
-import {Invitation} from "../../invitation/invitation";
 
 @Component({
   selector: 'app-game-list',
@@ -12,9 +11,7 @@ import {Invitation} from "../../invitation/invitation";
 })
 export class GameListComponent implements OnInit {
   public gamesList: Game[] = [];
-  public gamesLoading: Game[] = [];
-  public gamesPlaying: Game[] = [];
-  public gamesFinished: Game[] = [];
+  public games: Game[] = [];
   public totalGames = 0;
   public page = 1;
   public pageSize = 2;
@@ -29,10 +26,8 @@ export class GameListComponent implements OnInit {
       .subscribe(
         (gamesList) => {
           this.gamesList = gamesList.sort((a, b) => a.name.localeCompare(b.name));
-          this.gamesLoading = gamesList.filter( g => g.status === 'LOADING').sort((a, b) => a.name.localeCompare(b.name));
-          this.gamesPlaying = gamesList.filter( g => g.status === 'PLAYING').sort((a, b) => a.name.localeCompare(b.name));
-          this.gamesFinished = gamesList.filter( g => g.status === 'FINISHED').sort((a, b) => a.name.localeCompare(b.name));
           this.totalGames = this.gamesList.length;
+          this.games = this.gamesList;
         });
   }
 
@@ -46,29 +41,25 @@ export class GameListComponent implements OnInit {
   }
 
   openTabStatus(evt, status) {
-    var i, elementClass, tablinks;
-    /*
-    elementClass = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < elementClass.length; i++) {
-      elementClass[i].style.display = "none";
-    }
-     */
+    var i, tablinks;
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     evt.currentTarget.className += " active";
-    //document.getElementById(status).style.display = "block";
+
     if(status == "loading"){
-      this.gamesList = this.gamesLoading;
+      this.gamesList = this.games.filter( g => g.status === 'LOADING').sort((a, b) => a.name.localeCompare(b.name));
     }else if(status == "playing"){
-      this.gamesList = this.gamesPlaying;
+      this.gamesList = this.games.filter( g => g.status === 'PLAYING').sort((a, b) => a.name.localeCompare(b.name));
     }else{
-      this.gamesList = this.gamesFinished;
+      this.gamesList = this.games.filter( g => g.status === 'FINISHED').sort((a, b) => a.name.localeCompare(b.name));
     }
+    this.page=1;
   }
 
   changePage() {
-    this.gameService.page(this.page - 1).subscribe();
+    this.gameService.page(this.page - 1).subscribe(
+      (games: Game[]) => this.gamesList = games);
   }
 }
