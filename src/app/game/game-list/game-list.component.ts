@@ -12,6 +12,7 @@ import {Invitation} from "../../invitation/invitation";
 })
 export class GameListComponent implements OnInit {
   public gamesList: Game[] = [];
+  public gamesLoading: Game[] = [];
   public gamesPlaying: Game[] = [];
   public gamesFinished: Game[] = [];
   public totalGames = 0;
@@ -27,7 +28,8 @@ export class GameListComponent implements OnInit {
     this.gameService.getAll()
       .subscribe(
         (gamesList) => {
-          this.gamesList = gamesList.filter( g => g.status === 'LOADING').sort((a, b) => a.name.localeCompare(b.name));
+          this.gamesList = gamesList.sort((a, b) => a.name.localeCompare(b.name));
+          this.gamesLoading = gamesList.filter( g => g.status === 'LOADING').sort((a, b) => a.name.localeCompare(b.name));
           this.gamesPlaying = gamesList.filter( g => g.status === 'PLAYING').sort((a, b) => a.name.localeCompare(b.name));
           this.gamesFinished = gamesList.filter( g => g.status === 'FINISHED').sort((a, b) => a.name.localeCompare(b.name));
           this.totalGames = this.gamesList.length;
@@ -40,6 +42,7 @@ export class GameListComponent implements OnInit {
 
   showSearchResults(gamesList) {
     this.gamesList = gamesList;
+    this.openTabStatus(onclick,'search');
   }
 
   openTabStatus(evt, status) {

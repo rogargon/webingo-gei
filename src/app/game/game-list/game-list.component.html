@@ -15,8 +15,30 @@
   <button class="tablinks" (click)="openTabStatus($event, 'finished')">Finished</button>
 </div>
 
-<div id="loading" class="tabcontent" style="display:block;">
+<div id="search" class="tabcontent">
   <div class="card mb-1" *ngFor="let game of gamesList">
+    <div class="card-block row m-1">
+      <h4 class="card-header col-md-12 p-1">
+        <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
+      <div class="col-4 p-1 mt-1">
+        <h6 class="card-subtitle text-muted"><i class="fa fa-ghost fa-sm prefix grey-text"></i>Name</h6>
+        <p class="card-text">{{game.name}}</p>
+      </div>
+      <div class="col-4 p-1 mt-1">
+        <h6 class="card-subtitle text-muted">Price per Card</h6>
+        <p class="card-text">{{game.pricePerCard}}</p>
+      </div>
+      <div class="col-4 p-1">
+        <button type="button" class="btn m-1 btn-outline-success pull-right" *ngIf="isAdmin()"><a [routerLink]="[game.uri+'/edit']">Edit</a></button>
+        <button type="button" class="btn m-1 btn-outline-primary pull-right"><a [routerLink]="[game.uri]">Details</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="loading" class="tabcontent" style="display:block;">
+  <div class="card mb-1" *ngFor="let game of gamesLoading">
     <div class="card-block row m-1">
       <h4 class="card-header col-md-12 p-1">
         <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
