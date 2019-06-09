@@ -17,7 +17,7 @@ export class GameListComponent implements OnInit {
   public gamesFinished: Game[] = [];
   public totalGames = 0;
   public page = 1;
-  public pageSize = 10;
+  public pageSize = 2;
 
   constructor(public router: Router,
               private gameService: GameAdminService,
@@ -47,16 +47,25 @@ export class GameListComponent implements OnInit {
 
   openTabStatus(evt, status) {
     var i, elementClass, tablinks;
+    /*
     elementClass = document.getElementsByClassName("tabcontent");
     for (i = 0; i < elementClass.length; i++) {
       elementClass[i].style.display = "none";
     }
+     */
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    document.getElementById(status).style.display = "block";
     evt.currentTarget.className += " active";
+    //document.getElementById(status).style.display = "block";
+    if(status == "loading"){
+      this.gamesList = this.gamesLoading;
+    }else if(status == "playing"){
+      this.gamesList = this.gamesPlaying;
+    }else{
+      this.gamesList = this.gamesFinished;
+    }
   }
 
   changePage() {

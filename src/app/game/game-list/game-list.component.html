@@ -15,6 +15,7 @@
   <button class="tablinks" (click)="openTabStatus($event, 'finished')">Finished</button>
 </div>
 
+<!--
 <div id="search" class="tabcontent">
   <div class="card mb-1" *ngFor="let game of gamesList">
     <div class="card-block row m-1">
@@ -35,10 +36,10 @@
     </div>
   </div>
 </div>
-
+-->
 
 <div id="loading" class="tabcontent" style="display:block;">
-  <div class="card mb-1" *ngFor="let game of gamesLoading">
+  <div class="card mb-1" *ngFor="let game of gamesList">
     <div class="card-block row m-1">
       <h4 class="card-header col-md-12 p-1">
         <a [routerLink]="[game.uri]">{{game.name}}</a></h4>
@@ -58,6 +59,7 @@
   </div>
 </div>
 
+<!--
 <div id="playing" class="tabcontent">
   <div class="card mb-1" *ngFor="let game of gamesPlaying">
     <div class="card-block row m-1">
@@ -100,6 +102,7 @@
   </div>
 </div>
 <br>
+-->
 <ngb-pagination class="d-flex justify-content-center"
                 [(page)]="page" [pageSize]="pageSize" [collectionSize]=""
                 (pageChange)="changePage()"></ngb-pagination>
