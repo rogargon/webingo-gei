@@ -9,4 +9,6 @@ export class Game extends Resource {
   status: string;
   jackpot: number;
   createdAt: string;
+  line: Boolean;
+  bingo: Boolean;
 }

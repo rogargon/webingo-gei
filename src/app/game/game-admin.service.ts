@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 import {Game} from "./game";
+import {HalOptions, RestService, SubTypeBuilder} from "angular4-hal-aot";
+
 
 @Injectable()
-export class GameAdminService {
+export class GameAdminService extends RestService<Game>{
 
-  constructor(private http: HttpClient) {
+  constructor(injector: Injector, private http: HttpClient) {
+    super(Game, 'Games', injector);
   }
 
   private getHttpOptions() {
@@ -17,12 +20,20 @@ export class GameAdminService {
     };
   }
 
+  getAll(options?: HalOptions): Observable<Game[]> {
+    return this.http.get(`${environment.API}/games`).pipe(
+      map((res: any) => res._embedded.games)
+    );
+  }
+
   // GET /games
+  /*
   getAll(): Observable<Game[]> {
     return this.http.get(`${environment.API}/games`).pipe(
       map((res: any) => res._embedded.games)
     );
   }
+  */
 
   // GET /games/{id}
   get(id: string): Observable<Game> {
@@ -51,5 +62,13 @@ export class GameAdminService {
     return this.http.get(`${environment.API}/games/search/findGameByNameContaining?text=${text}`).pipe(
       map((res: any) => res._embedded.games)
     );
+  }
+
+  public findByGames(status: any, pagesize: any): Observable<Game[]> {
+    const options: any = {
+      params: [{key: 'games', value: status}],
+      size: pagesize
+    };
+    return this.search('findByGames', options);
   }
 }

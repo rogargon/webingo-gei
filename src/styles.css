@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 #spinner {
   display: inline-block;
   width: 50px;
@@ -17,3 +18,21 @@
 @-webkit-keyframes spin {
   to { -webkit-transform: rotate(360deg); }
 }
+
+:root {
+  --primary-color: #fff;
+  --background-color: #fff;
+  --text-color: #2d2d2d;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+}
+
+p{
+  color: black !important;
+}
+

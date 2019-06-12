@@ -11,7 +11,10 @@ import {AuthenticationBasicService} from '../../login-basic/authentication-basic
 })
 export class GameListComponent implements OnInit {
   public gamesList: Game[] = [];
+  public games: Game[] = [];
   public totalGames = 0;
+  public page = 1;
+  public pageSize = 2;
 
   constructor(public router: Router,
               private gameService: GameAdminService,
@@ -24,6 +27,7 @@ export class GameListComponent implements OnInit {
         (gamesList) => {
           this.gamesList = gamesList.sort((a, b) => a.name.localeCompare(b.name));
           this.totalGames = this.gamesList.length;
+          this.games = this.gamesList;
         });
   }
 
@@ -33,5 +37,29 @@ export class GameListComponent implements OnInit {
 
   showSearchResults(gamesList) {
     this.gamesList = gamesList;
+    this.openTabStatus(onclick,'search');
+  }
+
+  openTabStatus(evt, status) {
+    var i, tablinks;
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    evt.currentTarget.className += " active";
+
+    if(status == "loading"){
+      this.gamesList = this.games.filter( g => g.status === 'LOADING').sort((a, b) => a.name.localeCompare(b.name));
+    }else if(status == "playing"){
+      this.gamesList = this.games.filter( g => g.status === 'PLAYING').sort((a, b) => a.name.localeCompare(b.name));
+    }else{
+      this.gamesList = this.games.filter( g => g.status === 'FINISHED').sort((a, b) => a.name.localeCompare(b.name));
+    }
+    this.page=1;
+  }
+
+  changePage() {
+    this.gameService.page(this.page - 1).subscribe(
+      (games: Game[]) => this.gamesList = games);
   }
 }

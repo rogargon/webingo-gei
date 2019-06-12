@@ -29,8 +29,8 @@
         <p class="card-text">{{user.authorities[0]?.authority.split('_')[1]}}</p>
       </div>
       <div class="col-4">
-        <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="[user.uri]">Details
-        </button>
+        <button type="button" class="btn m-1 btn-outline-success pull-right" *ngIf="isAdmin()"><a [routerLink]="[user.uri+'/edit']">Edit</a></button>
+        <button type="button" class="btn m-1 btn-outline-primary pull-right" [routerLink]="[user.uri]">Details</button>
       </div>
     </div>
   </div>

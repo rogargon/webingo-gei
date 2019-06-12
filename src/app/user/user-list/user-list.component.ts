@@ -5,6 +5,7 @@ import {PlayerService} from '../player.service';
 import {AdminService} from '../admin.service';
 import {forkJoin} from 'rxjs';
 import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Invitation} from "../../invitation/invitation";
 
 @Component({
   selector: 'app-user-list',

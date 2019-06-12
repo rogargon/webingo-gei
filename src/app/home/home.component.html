@@ -1,3 +1,4 @@
+<h3 *ngIf="gamesList.length != 0">Loading Games</h3>
 <div class="card mb-1" *ngFor="let game of gamesList">
   <div class="card-block row m-1">
     <h4 class="card-header col-md-12 p-1">
@@ -15,7 +16,9 @@
       <p class="card-text">{{game.createdAt}}</p>
     </div>
     <div class="col-3 p-1">
-      <button type="button" class="btn m-1 btn-success pull-right" (click)="showLoadingMessage(game)"><i class="fa fa-play" style="margin-right: 5px"></i><a>PLAY</a></button>
+      <button type="button" class="btn m-1 btn-success pull-right" (click)="showLoadingMessage(game)" *ngIf="!isAdmin()"><i class="fa fa-play" style="margin-right: 5px"></i><a>PLAY</a></button>
+      <button type="button" class="btn m-1 btn-success pull-right" (click)="manageGame(game)" *ngIf="isAdmin()"><i class="fa fa-play" style="margin-right: 5px"></i><a>Manage</a></button>
     </div>
   </div>
 </div>
+
