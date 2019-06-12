@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbCollapseModule, NgbDropdownModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularHalModule } from 'angular4-hal-aot';
 import { ExternalConfigurationService } from './external-configuration-service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -58,6 +58,8 @@ import { NotFoundComponent } from './error-handler/error-alert/not-found.compone
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.component';
+import {GameManageComponent} from "./game/game-manage/game-manage.component";
+import {ThemeService} from "./theme.service";
 
 @NgModule({
   declarations: [
@@ -95,6 +97,7 @@ import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.compo
     NotFoundComponent,
     HomeComponent,
     CardPanelComponent,
+    GameManageComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,6 +117,7 @@ import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.compo
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -121,7 +125,7 @@ import {CardPanelComponent} from './card/card-detail/card-panel/card-panel.compo
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
 
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, PlayerService,
-    GameService, GameAdminService, CardService, InvitationService
+    GameService, GameAdminService, CardService, InvitationService, ThemeService
   ],
   bootstrap: [AppComponent]
 })

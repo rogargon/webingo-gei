@@ -13,16 +13,22 @@ import {CardService} from '../card/card.service';
 })
 export class HomeComponent implements OnInit {
   public gamesList: Game[] = [];
+  public gamesFinished: Game[] = [];
   public totalGames = 0;
   private card: Card;
 
-  constructor(public router: Router, private gameService: GameAdminService, private cardService: CardService) {}
+  constructor(public router: Router,
+              private gameService: GameAdminService,
+              private cardService: CardService,
+              private authenticationService: AuthenticationBasicService,
+  ) {}
 
   ngOnInit() {
     this.gameService.getAll()
       .subscribe((gamesList) => {
           gamesList.forEach(g => console.log(g.status));
           this.gamesList = gamesList.filter( g => g.status === 'LOADING');
+          this.gamesFinished = gamesList.filter( g => g.status === 'FINISHED');
           this.totalGames = this.gamesList.length;
       });
   }
@@ -42,5 +48,13 @@ export class HomeComponent implements OnInit {
         (card: Card) => this.router.navigate([game.uri])
       );
     });
+  }
+
+  manageGame(game){
+    this.router.navigate([game.uri+'/manage']);
+  }
+
+  isAdmin() {
+    return this.authenticationService.isAdmin();
   }
 }

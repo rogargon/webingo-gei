@@ -6,7 +6,7 @@
     <div class="form-group" [class.was-validated]="name.dirty || name.touched">
       <label class="control-label" for="gameName">GameName*</label>
       <input id="gamename" name="gamename" type="text" class="form-control" required
-             [(ngModel)]="game.name" #name="ngModel">
+             [(ngModel)]="game.name" #name="ngModel" maxlength="10">
       <div class="invalid-feedback">A Game Name is required</div>
     </div>
 

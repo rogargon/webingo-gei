@@ -36,7 +36,7 @@
   </div>
 </ng-template>
 
-<div class="row justify-content-between">
+<div class="row justify-content-between" *ngIf="!isAdmin()">
   <div class="col mb-3">
     <button id="newGameBtn" class="btn btn-success pull-right" type="button" (click)="openModal(newinvitation, 'modal-new-invitation')"><i class="fa fa-user" style="margin-right: 5px"></i>Invite Player</button>
   </div>
@@ -98,7 +98,7 @@
   </div>
 </div>
 
-<div id="outer">
+<div id="outer" *ngIf="!isAdmin()">
   <div id="inner">
     <h5>Your card</h5>
 

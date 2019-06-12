@@ -1,0 +1,45 @@
+<div class="card mb-1">
+  <div class="card-block">
+    <h4 class="card-header text-left"><u><a [routerLink]="[game.uri]">{{game.name}}</a></u> - Game Manage</h4>
+    <div class="card-body row m-1">
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Id</h6>
+        <p class="card-text">{{game.id}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <p class="card-text">{{game.name}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Status</h6>
+        <p class="card-text">{{game.status}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Jackpot</h6>
+        <p class="card-text">{{game.jackpot}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">PricePerCard</h6>
+        <p class="card-text">{{game.pricePerCard}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">CreatedAt</h6>
+        <p class="card-text">{{game.createdAt}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Bingo</h6>
+        <p class="card-text">{{game.bingo}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Line</h6>
+        <p class="card-text">{{game.line}}</p>
+      </div>
+    </div>
+
+    <div class="card-footer text-right" *ngIf="isAdmin()">
+      <button id="listBtn" type="button" [routerLink]="['']"
+              class="btn m-1 btn-outline-primary">Back
+      </button>
+    </div>
+  </div>
+</div>

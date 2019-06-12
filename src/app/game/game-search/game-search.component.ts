@@ -1,5 +1,4 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {GameService} from "../game.service";
 import {Game} from "../game";
 import {GameAdminService} from "../game-admin.service";
 
